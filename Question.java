@@ -93,9 +93,14 @@ public class Question {
 
 	public void print(int position) {
 		System.out.printf("%d. %s\n", position + 1, getQ());
-		System.out.printf("numAns: %d\n", numAns);
+		// System.out.printf("numAns: %d\n", numAns);
 		for (int i = 0; i < numAns; i++) {
-			aArray[i].print(i);
+			if (aArray[i].isSelected()) {
+				System.out.printf("[%c]. ", i + 0x41);
+			} else {
+				System.out.printf("(%c). ", i + 0x41);
+			}
+            aArray[i].print();
 		}
 	}
 }

@@ -43,13 +43,9 @@ public class Answer {
 
 	// Miscelleaneous
 
-	public void print(int position) { 
+	public void print() { 
         // Add 0x41 since 0x41 is ASCII hexadecimal for 'A'
 		// System.out.println("Hello, world!\n");
-		if (this.isSelected()) {
-			System.out.printf("[%c] %s\n", position + 0x41, _A);
-		} else {
-			System.out.printf("(%c) %s\n", position + 0x41, _A);
-		}
+		System.out.printf("%s\n", _A);
 	}
 }
