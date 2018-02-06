@@ -91,8 +91,8 @@ public class Question {
 		return value;
 	}
 
-	public void print(int position) {
-		System.out.printf("%d. %s\n", position + 1, getQ());
+	public void print() {
+		System.out.printf("%s\n", getQ());
 		// System.out.printf("numAns: %d\n", numAns);
 		for (int i = 0; i < numAns; i++) {
 			if (aArray[i].isSelected()) {

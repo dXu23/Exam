@@ -42,7 +42,8 @@ public class Exam {
 	public void print() {
 		System.out.printf("%s\n", getHeader());
 		for (int i = 0; i < this.numQuestions; i++) {
-			getQuestion(i).print(i);
+			System.out.printf("%d. ", i);
+			getQuestion(i).print();
 		}
 	}
 
