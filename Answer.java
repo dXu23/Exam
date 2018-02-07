@@ -1,5 +1,6 @@
-// Name: Daniel Xu
-// NetId: dxu23
+/** @author Daniel Xu
+    @version 1.1
+*/
 public class Answer {
 	private String _A;
 	private boolean _selected;

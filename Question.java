@@ -1,29 +1,33 @@
-// Name: Daniel Xu
-// NetId: dxu23
+/** 
+*  Question.java
+*  @author Daniel Xu
+*  @version 1.1
+*/
 import java.util.Random;
 
-public class Question {
-	private String _Q;
-	private Answer [] aArray;
+public abstract class Question {
+	private String text;
+	private Answer rightAnswer;
+	private Answer studentAnswer;
+	private double maxValue;
 	private boolean _multiple;
 	private int N;
 	private int numAns;
 
 	// Constructor
-	Question(String Q) {
-		_Q = Q;
+	Question(String text, double maxValue) {
+		/**
+		  * Constructs the Question object. 
+		  * @param text argument that should have the Question text
+		  * @param maxValue the maximum value or total possible points of the Question object
+		  */
+		this.text = text;
+		this.maxValue = maxValue
 		N = 5;
 		aArray = new Answer[N];
 		numAns = 0;
 	}
 
-	Question(String Q, boolean multiple) {
-		_Q = Q;
-		N = 5;
-		aArray = new Answer[N];
-		numAns = 0;
-		_multiple = multiple;
-	}
 
 	// Set Methods
 	public void addAnswer(Answer A) {
@@ -38,6 +42,40 @@ public class Question {
 
 	public void unselectAnswer(int position) {
 		aArray[position].setSelected(false);
+	}
+
+
+
+	// Get Methods
+
+	public double getValue() {
+		double value = 0;
+		int len = aArray.length;
+		for (int i = 0; i < len; i++) {
+			value = value + aArray[i].getValue();
+		}
+		return value;
+	}
+
+	public Answer getNewAnswer() {
+		/**
+		  * @return Answer object suitably matched to question type
+		  */
+		Answer newAnswer = new Answer()
+		return newAnswer;
+	}
+
+	public void print() {
+		System.out.printf("%s\n", text);
+	}
+}
+
+	Question(String Q, boolean multiple) {
+		text = Q;
+		N = 5;
+		aArray = new Answer[N];
+		numAns = 0;
+		_multiple = multiple;
 	}
 
 	public void selectAnswer(int position) {
@@ -76,21 +114,6 @@ public class Question {
 			swapAnswers(randNumA, randNumB);
 		}
 	}
-
-	// Get Methods
-	public String getQ() {
-		return this._Q;
-	}
-
-	public double getValue() {
-		double value = 0;
-		int len = aArray.length;
-		for (int i = 0; i < len; i++) {
-			value = value + aArray[i].getValue();
-		}
-		return value;
-	}
-
 	public void print() {
 		System.out.printf("%s\n", getQ());
 		// System.out.printf("numAns: %d\n", numAns);
@@ -103,4 +126,3 @@ public class Question {
             aArray[i].print();
 		}
 	}
-}
