@@ -11,7 +11,7 @@ public class Exam {
 	private String text;
 	private ArrayList<Question> qArrayList;
 
-	Exam(String header) {
+	public Exam(String header) {
 		/**
 		  Constructs the Exam object
 		  @param header This String argument will be the header of the exam
@@ -23,9 +23,11 @@ public class Exam {
 	}
 
 	// Get Method
+	/*
 	public String getHeader() {
 		return this.text;
 	}
+	*/
 
 	/*
 	public int getNumQuestions() {
@@ -35,8 +37,36 @@ public class Exam {
 
 	// Set Methods
 	public void addQuestion(Question question) {
-		// In case user enters more questions than there is memory in qArrayList
+		/** Adds Question to Exam class
+		  * @param question Question to be added to Exam class
+		  */
 		qArrayList.add(question);
+	}
+
+	public void reorderQuestions() {
+		/**
+		  * Randomly reorders questions in Exam object using 
+		  * shuffle method from Collections
+		  * @return Nothing
+		  */
+		Collections.shuffle(qArrayList);
+	}
+
+	public void reorderMCAnswer(int position) {
+		/**
+		  * Reorders the Answers in Multiple Choice Questions
+		  * @param position position of Question whose answers are being reordered
+		  */
+		if (position == -1) {
+			for (Answer examQuestions : qArrayList) {
+				if (MCA instanceof examQuestions) {
+					examQuestions.reorderAnswers();
+				}
+			}
+		}
+		else {
+		}
+		
 	}
 
 	/*
@@ -64,13 +94,6 @@ public class Exam {
 	}
 	*/
 
-	public void reorderQuestions() {
-		/**
-		  * Randomly reorders questions in Exam object using 
-		  * shuffle method from Collections
-		  */
-		Collections.shuffle(qArrayList);
-	}
 
 	double getValue() {
 		/**
