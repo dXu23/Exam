@@ -14,7 +14,7 @@ public class ExamTester {
 		System.out.println("Step 1: Creating Exam objects, Question objects, and Answer objects... \n");
 		Exam newExam = new Exam("CS 342 Exam\n");
 		newExam.addQuestion(new MCSAQuestion("What is the derivative of e^x?"));
-		Answer a = new Answer("e^x");
+		MCSAAnswer a = new MCSAAnswer("e^x");
 		a.setValue(4, 0);
 		newExam.getQuestion(0).addAnswer(a);
 		a = new Answer("sin x");
