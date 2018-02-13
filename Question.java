@@ -44,7 +44,6 @@ public abstract class Question {
 		this.rightAnswer = ans;
 	}
 
-
 	// Get Methods
 
 	abstract Answer getNewAnswer() {

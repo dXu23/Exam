@@ -15,7 +15,7 @@ public class MCAnswer extends Answer {
 		this.text = text;
 		this.selected = false;
 		if (creditIfSelected < 0 || creditIfSelected > 1) {
-			this.creditIfSelected = 1;
+			this.creditIfSelected = 0;
 		} else {
 			this.creditIfSelected = creditIfSelected;
 		}
