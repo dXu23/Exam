@@ -9,7 +9,7 @@ import java.util.Collections;
 
 public class Exam {
 	private String text;
-	private ArrayList<Question> qArrayList;
+	private ArrayList<Question> questions;
 
 	public Exam(String header) {
 		/**
@@ -19,7 +19,7 @@ public class Exam {
 		*/
 		System.out.printf("Creating new exam with header %s...\n", header);
 		text = header;
-		qArrayList = new ArrayList<Question>();
+		questions = new ArrayList<Question>();
 	}
 
 	// Get Method
@@ -40,7 +40,7 @@ public class Exam {
 		/** Adds Question to Exam class
 		  * @param question Question to be added to Exam class
 		  */
-		qArrayList.add(question);
+		questions.add(question);
 	}
 
 	public void reorderQuestions() {
@@ -49,7 +49,7 @@ public class Exam {
 		  * shuffle method from Collections
 		  * @return Nothing
 		  */
-		Collections.shuffle(qArrayList);
+		Collections.shuffle(questions);
 	}
 
 	public void reorderMCAnswer(int position) {
@@ -58,26 +58,27 @@ public class Exam {
 		  * @param position position of Question whose answers are being reordered
 		  */
 		if (position == -1) {
-			for (Answer examQuestions : qArrayList) {
-				if (MCA instanceof examQuestions) {
-					examQuestions.reorderAnswers();
+			for (Answer examQuestion : questions) {
+				if (examQuestion instanceof MCQuestion) {
+					examQuestion.reorderAnswers();
 				}
 			}
 		}
 		else {
+			questions.get(position).reorderAnswers();
 		}
 		
 	}
 
 	/*
 	public Question getQuestion(int position) {
-		return qArrayList[position];
+		return questions[position];
 	}
 	*/
 
 	public void print() {
 		System.out.printf("%s\n", text);
-		Iterator<Question> iterQuestions = qArrayList.iterator();
+		Iterator<Question> iterQuestions = questions.iterator();
 		int i = 1;
 		while (iterQuestions.hasNext()) {
 			System.out.printf("%d. ", i);
@@ -100,7 +101,7 @@ public class Exam {
 		  Gets overall score of Exam. 
 		  @return Total score of Exam. 
 		  */
-		Iterator<Question> iterQuestions = qArrayList.iterator();
+		Iterator<Question> iterQuestions = questions.iterator();
 		double total = 0;
 		while (iterQuestions.hasNext()) {
 			total += iterQuestions.next().getValue();

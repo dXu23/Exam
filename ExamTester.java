@@ -13,7 +13,7 @@ public class ExamTester {
 		// Step 1: Create the Exam object and Answer Objects
 		System.out.println("Step 1: Creating Exam objects, Question objects, and Answer objects... \n");
 		Exam newExam = new Exam("CS 342 Exam\n");
-		newExam.addQuestion(new Question("What is the derivative of e^x?"));
+		newExam.addQuestion(new MCSAQuestion("What is the derivative of e^x?"));
 		Answer a = new Answer("e^x");
 		a.setValue(4, 0);
 		newExam.getQuestion(0).addAnswer(a);
@@ -29,7 +29,7 @@ public class ExamTester {
 		a = new Answer("tan x");
 		a.setValue(0, 0);
 		newExam.getQuestion(0).addAnswer(a);
-		newExam.addQuestion(new Question("How many bytes are in an int?"));
+		newExam.addQuestion(new MCSAQuestion("How many bytes are in an int?"));
 		a = new Answer("4");
 		a.setValue(4, 0);
 		newExam.getQuestion(1).addAnswer(a);
