@@ -6,10 +6,10 @@
 import java.util.Random;
 
 public abstract class Question {
-	private String text;
-	private Answer rightAnswer;
-	private Answer studentAnswer;
-	private double maxValue;
+	protected String text;
+	protected Answer rightAnswer;
+	protected Answer studentAnswer;
+	protected double maxValue;
 	// private int N;
 	// private int numAns;
 
@@ -25,7 +25,7 @@ public abstract class Question {
 	}
 
 	// Second constructor
-	Question(String text) {
+	protected Question(String text) {
 		this(text, 1);
 	}
 

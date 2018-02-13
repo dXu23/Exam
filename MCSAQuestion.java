@@ -6,47 +6,55 @@ public class MCSAQuestion {
 	}
 
 	MCSAQuestion(String text) {
-		MCSAQuestion(text, 1);
+		this(text, 1);
+	}
+
+	public Answer getNewAnswer() {
+		/**
+		  * Reads String and Double from user and creates
+		  * an Answer object, which it then adds to ArrayList
+		  * answer
+		  */
+		System.out.println("Please enter a string description for your answer.\n");
+		Scanner scAns = new Scanner(System.in);
+		String ansDescription = scAns.nextLine();
+		System.out.println("Please enter the value of the answer.\n");
+		Scanner scVal = new Scanner(System.in);
+		double ansVal = scVal.nextDouble();
+		Answer ans = new MCSAAnswer(ansDescription, ansVal);
+		answers.add(ans);
+		return ans;
 	}
 
 	public Answer getNewAnswer(String text) {
+		/** Creates a new Answer object
+		  * @param text string to be description of answer
+		  *
+		  */
 		Answer ans = new MCSAAnswer(text);
+		answers.add(ans);
 		return ans;
 	}
 
 	public Answer getNewAnswer(String text, double creditIfSelected) {
 		Answer ans = new MCSAAnswer(text, creditIfSelected);
+		answers.add(ans);
 		return ans;
 	}
 
 
-	public void getAnswerFromStudent(int position) {
+	public Answer getAnswerFromStudent() {
 		/**
 		  * Gets an Answer from the student through stdin
 		  */
-
-		if ((position < 0) || (position >= N)) { // Check whether position is valid or not
-			return;
-		}
-		for (int i = 0; i < position; i++) {
-			if (aArray[i].isSelected()) {
-				aArray[i].setSelected(false);
-			}
-		}
-		for (int i = position + 1; i < N; i++) {
-			if (aArray[i].isSelected() == true) {
-				aArray[i].setSelected(false);
-			}
-		}
-		answers.get(position).setSelected(true);
-	}
-
-	public getAnswerFromStudent() {
+		System.out.println("Please enter your answer: \n");
 		Scanner scInput = new Scanner(System.in);
-		String studentInput = scInput.nextLine();
-		this.studentAnswer = new MCSAAnswer(studentInput);
+		char charStdntAns = reader.findInLine(".").charAt(0);
+		studentAnswer = answers.get(charStdntAns - 0x41);
+		return studentAnswer;
 	}
 
-	getValue() {
+	public double getValue() {
+		return studentAnswer.getCredit(rightAnswer);
 	}
 }

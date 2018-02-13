@@ -4,12 +4,18 @@ public class MCSAAnswer extends Answer {
 	private boolean selected;
 
 	MCSAAnswer(String text, double creditIfSelected) {
-		super(text, maxValue);
+		super(text, creditIfSelected);
 	}
 
+	MCSAAnswer(String text) {
+		this(text, 0);
+	}
+
+	/*
 	public double getValue() {
 		return 0;
 	}
+	*/
 
 	public double getCredit(Answer rightAnswer) {
 		if (this.equals(rightAnswer)) {

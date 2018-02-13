@@ -1,17 +1,16 @@
 
 public abstract class MCQuestion extends Question {
 	// Members
-	protected ArrayList<Answer> answers;
+	protected ArrayList<MCAnswer> answers;
 	
 	// Constructor
 	MCQuestion(String text, double maxValue) {
 		super(text, maxValue);
-		answers = new ArrayList<Answer>();
+		answers = new ArrayList<MCAnswer>();
 	}
 
 	MCQuestion(String text) {
-		super(text);
-		answers = new ArrayList<Answer>();
+		this(text, 1);
 	}
 
 	public void addAnswer(MCAnswer MCA) {
