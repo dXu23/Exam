@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 public abstract class MCQuestion extends Question {
 	// Members
 	protected ArrayList<MCAnswer> answers;

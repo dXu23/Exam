@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 public class MCMAQuestion extends MCQuestion {
 	// Members
 	protected ArrayList<Answer> studentAnswer;
@@ -16,9 +17,10 @@ public class MCMAQuestion extends MCQuestion {
 	public double getValue() {
 		double value = 0;
 		// int len = aArray.length;
-		for (Answer ans: studentAnswer) {
-			if () {
-				value = value + ans.getValue();
+		for (Answer studentAns: studentAnswer) {
+			for (Answer rightAns: rightAnswer) {
+				if (studentAns.equals(rightAns)) {
+				}
 			}
 		}
 		return value;

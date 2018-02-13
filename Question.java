@@ -46,7 +46,7 @@ public abstract class Question {
 
 	// Get Methods
 
-	abstract Answer getNewAnswer() {
+	abstract Answer getNewAnswer();
 		/**
 		  * @return Answer object suitably matched to question type
 		  */
@@ -54,19 +54,16 @@ public abstract class Question {
 		Answer NewAnswer = new Answer();
 		return NewAnswer;
 		*/
-	}
 
-	abstract void getAnswerFromStudent() {
+	abstract void getAnswerFromStudent();
 		/**
 		  * Gets an Answer from the student through stdin
 		  */
-	}
 
-	abstract double getValue() {
+	abstract double getValue();
 		/** Returns value of Question
 		  * @return Value of question
 		  */
-	}
 	// Set Methods
 
 	/*

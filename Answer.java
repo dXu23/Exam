@@ -1,24 +1,22 @@
 /** @author Daniel Xu
     @version 1.1
 */
-public class Answer {
+abstract class Answer {
 
 	// Constructor 
 	protected Answer() {
 	}
 
-	abstract void print() { 
+	abstract void print();
 		/**
 		  * Prints the Answer
 		  */
-	}
 
 	// Get Methods
-	abstract double getCredit(Answer rightAnswer) {
+	abstract double getCredit(Answer rightAnswer);
 		/**
 		  * Gets credit for Answer
 		  */
-	}
 
 	// Set Methods
 

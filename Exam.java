@@ -58,7 +58,7 @@ public class Exam {
 		  * @param position position of Question whose answers are being reordered
 		  */
 		if (position == -1) {
-			for (Answer examQuestion : questions) {
+			for (Question examQuestion : questions) {
 				if (examQuestion instanceof MCQuestion) {
 					examQuestion.reorderAnswers();
 				}
