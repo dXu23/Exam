@@ -13,7 +13,7 @@ public class MCSAQuestion extends MCQuestion{
 	public Answer getNewAnswer() {
 		/**
 		  * Reads String and Double from user and creates
-		  * an Answer object, which it then adds to ArrayList
+		  * an MCSAnswer object, which it then adds to ArrayList
 		  * answer
 		  */
 		System.out.println("Please enter a string description for your answer.\n");
