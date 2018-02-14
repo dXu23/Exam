@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Scanner;
 public class MCMAQuestion extends MCQuestion {
 	// Members
 	protected ArrayList<Answer> studentAnswer;
