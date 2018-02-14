@@ -1,5 +1,7 @@
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 public abstract class MCQuestion extends Question {
 	// Members
 	protected ArrayList<MCAnswer> answers;
@@ -21,7 +23,7 @@ public abstract class MCQuestion extends Question {
 		  * @return Nothing
 		  */
 
-		answers.add(Answer);
+		answers.add(MCA);
 	}
 
 	public void reorderAnswers() {
@@ -52,7 +54,7 @@ public abstract class MCQuestion extends Question {
 		System.out.printf("%s\n", text);
 		// System.out.printf("numAns: %d\n", numAns);
 		char i = 'A';
-		for (Answer ans: answers) {
+		for (MCAnswer ans: answers) {
 			if (ans.selected) {
 				System.out.printf("[%c]. ", i++);
 			} else {

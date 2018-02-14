@@ -1,5 +1,5 @@
 
-public class MCAnswer extends Answer {
+public abstract class MCAnswer extends Answer {
 	protected String text;
 	protected boolean selected;
 	protected double creditIfSelected;

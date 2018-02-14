@@ -15,7 +15,6 @@ public class Exam {
 		/**
 		  Constructs the Exam object
 		  @param header This String argument will be the header of the exam
-		  @return Exam object. 
 		*/
 		System.out.printf("Creating new exam with header %s...\n", header);
 		text = header;
@@ -52,7 +51,7 @@ public class Exam {
 		Collections.shuffle(questions);
 	}
 
-	public void reorderMCAnswer(int position) {
+	public void reorderMCAnswers(int position) {
 		/**
 		  * Reorders the Answers in Multiple Choice Questions
 		  * @param position position of Question whose answers are being reordered
@@ -65,7 +64,11 @@ public class Exam {
 			}
 		}
 		else {
-			questions.get(position).reorderAnswers();
+			if (questions.get(position) instanceof MCQuestion) {
+				questions.get(position).reorderAnswers();
+			} else {
+				System.out.println("Question was not a MCQuestion\n");
+			}
 		}
 		
 	}

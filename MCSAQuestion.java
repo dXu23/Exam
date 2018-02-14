@@ -1,12 +1,12 @@
 import java.util.ArrayList;
-public class MCSAQuestion {
+public class MCSAQuestion extends MCQuestion{
 
 	// Constructors
-	MCSAQuestion(String text, double maxValue) {
+	public MCSAQuestion(String text, double maxValue) {
 		super(text, maxValue);
 	}
 
-	MCSAQuestion(String text) {
+	public MCSAQuestion(String text) {
 		this(text, 1);
 	}
 
