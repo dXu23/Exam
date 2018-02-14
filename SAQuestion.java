@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 public class SAQuestion {
 	public SAQuestion(String text, double maxValue) {
 		super(text, maxValue);
