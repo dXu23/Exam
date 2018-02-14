@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 public class MCSAQuestion extends MCQuestion{
 
 	// Constructors

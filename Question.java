@@ -55,7 +55,7 @@ public abstract class Question {
 		return NewAnswer;
 		*/
 
-	abstract void getAnswerFromStudent();
+	abstract Answer getAnswerFromStudent();
 		/**
 		  * Gets an Answer from the student through stdin
 		  */
