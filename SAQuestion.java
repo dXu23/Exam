@@ -11,7 +11,7 @@ public class SAQuestion extends Question {
 		System.out.println("Please enter the value of the short answer.\n");
 		Scanner scVal = new Scanner(System.in);
 		double ansVal = scVal.nextDouble();
-		Answer ans = new MCSAAnswer(ansDescription, ansVal);
+		Answer ans = new SAAnswer(ansDescription, ansVal);
 		answers.add(ans);
 		return ans;
 	}
@@ -19,7 +19,7 @@ public class SAQuestion extends Question {
 	public Answer getAnswerFromStudent() {
 		Scanner scInput = new Scanner(System.in);
 		String studentInput = scInput.nextLine();
-		this.studentAnswer = new MCSAAnswer(studentInput);
+		this.studentAnswer = new SAAnswer(studentInput);
 	}
 
 	public double getValue() {
