@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-public class MCSAQuestion extends MCQuestion{
+public class MCSAQuestion extends MCQuestion {
 
 	// Constructors
 	public MCSAQuestion(String text, double maxValue) {
@@ -23,7 +23,7 @@ public class MCSAQuestion extends MCQuestion{
 		System.out.println("Please enter the value of the answer.\n");
 		Scanner scVal = new Scanner(System.in);
 		double ansVal = scVal.nextDouble();
-		Answer ans = new MCSAAnswer(ansDescription, ansVal);
+		MCSAAnswer ans = new MCSAAnswer(ansDescription, ansVal);
 		answers.add(ans);
 		return ans;
 	}
@@ -33,13 +33,13 @@ public class MCSAQuestion extends MCQuestion{
 		  * @param text string to be description of answer
 		  *
 		  */
-		Answer ans = new MCSAAnswer(text);
+		MCSAAnswer ans = new MCSAAnswer(text);
 		answers.add(ans);
 		return ans;
 	}
 
 	public Answer getNewAnswer(String text, double creditIfSelected) {
-		Answer ans = new MCSAAnswer(text, creditIfSelected);
+		MCSAAnswer ans = new MCSAAnswer(text, creditIfSelected);
 		answers.add(ans);
 		return ans;
 	}
@@ -51,7 +51,7 @@ public class MCSAQuestion extends MCQuestion{
 		  */
 		System.out.println("Please enter your answer: \n");
 		Scanner scInput = new Scanner(System.in);
-		char charStdntAns = reader.findInLine(".").charAt(0);
+		char charStdntAns = scInput.findInLine(".").charAt(0);
 		studentAnswer = answers.get(charStdntAns - 0x41);
 		return studentAnswer;
 	}

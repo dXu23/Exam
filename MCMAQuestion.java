@@ -38,7 +38,7 @@ public class MCMAQuestion extends MCQuestion {
 		System.out.println("Please enter the value of the answer.\n");
 		Scanner scVal = new Scanner(System.in);
 		double ansVal = scVal.nextDouble();
-		Answer ans = new MCMAAnswer(ansDescription, ansVal);
+		MCMAAnswer ans = new MCMAAnswer(ansDescription, ansVal);
 		answers.add(ans);
 		return ans;
 	}
@@ -50,7 +50,7 @@ public class MCMAQuestion extends MCQuestion {
 		  * @param text String input to made the text description of MCMAAnswer object
 		  * @param creditIfSelected Double input to be made the value of the MCMAAnswer object
 		  */
-		Answer ans = new MCMAAnswer(text, creditIfSelected);
+		MCMAAnswer ans = new MCMAAnswer(text, creditIfSelected);
 		answers.add(ans);
 		return ans;
 	}

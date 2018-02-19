@@ -1,5 +1,5 @@
 
-public class MCSAAnswer extends Answer {
+public class MCSAAnswer extends MCAnswer {
 	private String text;
 	private boolean selected;
 
@@ -16,6 +16,10 @@ public class MCSAAnswer extends Answer {
 		return 0;
 	}
 	*/
+
+	public void print() {
+		System.out.printf("%s", text);
+	}
 
 	public double getCredit(Answer rightAnswer) {
 		if (this.equals(rightAnswer)) {
