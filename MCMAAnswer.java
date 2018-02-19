@@ -5,5 +5,6 @@ public class MCMAAnswer extends MCAnswer {
 	}
 
 	public double getCredit(Answer rightAnswer) {
+        return 2.0;
 	}
 }

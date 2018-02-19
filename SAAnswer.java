@@ -11,5 +11,6 @@ public class SAAnswer extends Answer {
 	}
 
 	public double getCredit(Answer rightAnswer) {
+        return 2;
 	}
 }

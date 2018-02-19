@@ -67,5 +67,6 @@ public class MCMAQuestion extends MCQuestion {
 			studentAnswer.add(answers.get(position));
 			answers.get(position).setSelected(true);
 		}
+        return answers.get(0);
 	}
 }

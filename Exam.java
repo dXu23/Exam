@@ -59,13 +59,15 @@ public class Exam {
 		if (position == -1) {
 			for (Question examQuestion : questions) {
 				if (examQuestion instanceof MCQuestion) {
-					examQuestion.reorderAnswers();
+					System.out.println(examQuestion.getClass().getName());
+                    // examQuestion.reorderAnswers();
 				}
 			}
 		}
 		else {
 			if (questions.get(position) instanceof MCQuestion) {
-				questions.get(position).reorderAnswers();
+                System.out.println(questions.get(position).getClass().getName());
+				// questions.get(position).reorderAnswers();
 			} else {
 				System.out.println("Question was not a MCQuestion\n");
 			}

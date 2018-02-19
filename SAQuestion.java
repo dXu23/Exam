@@ -8,11 +8,7 @@ public class SAQuestion extends Question {
 		System.out.println("Please enter a short answer.\n");
 		Scanner scAns = new Scanner(System.in);
 		String ansDescription = scAns.nextLine();
-		System.out.println("Please enter the value of the short answer.\n");
-		Scanner scVal = new Scanner(System.in);
-		double ansVal = scVal.nextDouble();
-		Answer ans = new SAAnswer(ansDescription, ansVal);
-		answers.add(ans);
+		SAAnswer ans = new SAAnswer(ansDescription);
 		return ans;
 	}
 
@@ -20,8 +16,10 @@ public class SAQuestion extends Question {
 		Scanner scInput = new Scanner(System.in);
 		String studentInput = scInput.nextLine();
 		this.studentAnswer = new SAAnswer(studentInput);
+        return this.studentAnswer;
 	}
 
 	public double getValue() {
+        return 2;
 	}
 }
