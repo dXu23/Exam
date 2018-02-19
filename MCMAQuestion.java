@@ -61,10 +61,11 @@ public class MCMAQuestion extends MCQuestion {
 		  */
 		System.out.println("Please enter the answers you think are correct: \n");
 		Scanner scInput = new Scanner(System.in).useDelimiter("\\s*,*\\s*");
+		int position = 0;
 		while (scInput.hasNext()) {
-			studentAnswer.add(rightAnswer.get(scInput.next().charAt(0) - 0x41));
+			position = scInput.next().charAt(0) - 0x41;
+			studentAnswer.add(answers.get(position));
+			answers.get(position).setSelected(true);
 		}
-
-		answers.get(position).setSelected(true);
 	}
 }

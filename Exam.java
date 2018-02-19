@@ -70,7 +70,6 @@ public class Exam {
 				System.out.println("Question was not a MCQuestion\n");
 			}
 		}
-		
 	}
 
 	/*
