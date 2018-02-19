@@ -53,14 +53,18 @@ public abstract class MCQuestion extends Question {
 	public void print() {
 		System.out.printf("%s\n", text);
 		// System.out.printf("numAns: %d\n", numAns);
-		char i = 'A';
+		int i = 0;
 		for (MCAnswer ans: answers) {
 			if (ans.selected) {
-				System.out.printf("[%c]. ", i++);
+				System.out.printf("[%c]. ", i + 0x41);
+                // System.out.printf("i: %d\n", (int) i - 0x41);
 			} else {
-				System.out.printf("(%c). ", i++);
+				System.out.printf("(%c). ", i + 0x41);
+                // System.out.printf("i: %d\n", (int) i - 0x41);
 			}
             answers.get(i).print();
+            System.out.println("\n");
+            i++;
 		}
 	}
 }

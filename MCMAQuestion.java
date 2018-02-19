@@ -50,6 +50,7 @@ public class MCMAQuestion extends MCQuestion {
 		  * @param text String input to made the text description of MCMAAnswer object
 		  * @param creditIfSelected Double input to be made the value of the MCMAAnswer object
 		  */
+        System.out.println("In getNewAnswer right now...\n");
 		MCMAAnswer ans = new MCMAAnswer(text, creditIfSelected);
 		answers.add(ans);
 		return ans;

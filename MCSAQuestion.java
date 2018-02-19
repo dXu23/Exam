@@ -40,6 +40,7 @@ public class MCSAQuestion extends MCQuestion {
 
 	public Answer getNewAnswer(String text, double creditIfSelected) {
 		MCSAAnswer ans = new MCSAAnswer(text, creditIfSelected);
+        // System.out.printf("%s\n", text);
 		answers.add(ans);
 		return ans;
 	}

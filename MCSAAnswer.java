@@ -1,13 +1,12 @@
 
 public class MCSAAnswer extends MCAnswer {
-	private String text;
-	private boolean selected;
 
-	MCSAAnswer(String text, double creditIfSelected) {
+	public MCSAAnswer(String text, double creditIfSelected) {
 		super(text, creditIfSelected);
+        // System.out.printf("text: %s\n", this.text);
 	}
 
-	MCSAAnswer(String text) {
+	public MCSAAnswer(String text) {
 		this(text, 0);
 	}
 
