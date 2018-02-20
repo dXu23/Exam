@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class MCSAQuestion extends MCQuestion {
 
 	// Constructors
+	// Works. 
 	public MCSAQuestion(String text, double maxValue) {
 		super(text, maxValue);
 	}
@@ -38,6 +39,7 @@ public class MCSAQuestion extends MCQuestion {
 		return ans;
 	}
 
+	// Works
 	public Answer getNewAnswer(String text, double creditIfSelected) {
 		MCSAAnswer ans = new MCSAAnswer(text, creditIfSelected);
         // System.out.printf("%s\n", text);

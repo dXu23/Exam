@@ -22,13 +22,9 @@ public class Exam {
 	}
 
 	// Get Method
-	/*
-	public String getHeader() {
-		return this.text;
-	}
-	*/
 
 	// Set Methods
+	// Works
 	public void addQuestion(Question question) {
 		/** Adds Question to Exam class
 		  * @param question Question to be added to Exam class
@@ -53,14 +49,14 @@ public class Exam {
 		if (position == -1) {
 			for (Question examQuestion : questions) {
 				if (examQuestion instanceof MCQuestion) {
-					System.out.println(examQuestion.getClass().getName());
+					// System.out.println(examQuestion.getClass().getName());
                     ((MCQuestion) examQuestion).reorderAnswers();
 				}
 			}
 		}
 		else {
 			if (questions.get(position) instanceof MCQuestion) {
-                System.out.println(questions.get(position).getClass().getName());
+                // System.out.println(questions.get(position).getClass().getName());
 				((MCQuestion) questions.get(position)).reorderAnswers();
 			} else {
 				System.out.println("Question was not a MCQuestion\n");
@@ -74,6 +70,7 @@ public class Exam {
 	}
 	*/
 
+	// Works
 	public void print() {
 		/** Prints the Exam
 		  */
@@ -86,6 +83,7 @@ public class Exam {
 		}
 	}
 
+	// Works
 	public void getAnswerFromStudent(int position) {
 		/** Gets an answer from student
 		  * given the question position. 
@@ -105,6 +103,7 @@ public class Exam {
 	*/
 
 
+	// Works
 	double getValue() {
 		/**
 		  Gets overall score of Exam. 
@@ -116,6 +115,23 @@ public class Exam {
 			total += examQuestion.getValue();
 		}
 		return total;
+	}
+
+	public void reportQuestionValues() {
+		System.out.print(
+				"+===============+===========+\n" +
+				"|    Question   |   Value   |\n" +
+				"+===============+===========+");
+		int i = 0;
+		for (Question examQuestion : questions) {
+			System.out.printf(
+					"|      %d       |    %lf    |" + 
+					"+---------------+-----------+", i, examQuestion.getValue());
+			i++;
+		}
+		System.out.printf(
+				"|     Total     |    %lf    |" +
+				"+---------------+-----------+", getValue());
 	}
 }
 

@@ -34,6 +34,7 @@ public abstract class Question {
 		System.out.printf("%s\n", text);
 	}
 
+	// Works
 	void setRightAnswer(Answer ans) {
 		/**
 		  * Sets the right answer of question. 

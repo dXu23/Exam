@@ -65,6 +65,8 @@ public class MCMAQuestion extends MCQuestion {
 		int position = 0;
 		while (scInput.hasNext()) {
 			position = scInput.next().charAt(0) - 0x41;
+			System.out.println("In getAnswerFromStudent...\n");
+			System.out.printf("position: %d\n", position);
 			studentAnswer.add(answers.get(position));
 			answers.get(position).setSelected(true);
 		}
