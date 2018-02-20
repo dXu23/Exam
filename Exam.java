@@ -81,13 +81,25 @@ public class Exam {
 	*/
 
 	public void print() {
+		/** Prints the Exam
+		  */
 		System.out.printf("%s\n", text);
-		Iterator<Question> iterQuestions = questions.iterator();
 		int i = 1;
-		while (iterQuestions.hasNext()) {
+		for (Question examQuestion : questions) {
 			System.out.printf("%d. ", i);
-			iterQuestions.next().print();
+			examQuestion.print();
 			i++;
+		}
+	}
+
+	public void getAnswerFromStudent(int position) {
+		/** Gets an answer from student
+		  * given the question position. 
+		  * @param position Question position in the exam
+		  */
+
+		if (questions.get(position) instanceof MCSAQuestion) {
+			questions.get(position).getAnswerFromStudent();
 		}
 	}
 
@@ -105,10 +117,10 @@ public class Exam {
 		  Gets overall score of Exam. 
 		  @return Total score of Exam. 
 		  */
-		Iterator<Question> iterQuestions = questions.iterator();
 		double total = 0;
-		while (iterQuestions.hasNext()) {
-			total += iterQuestions.next().getValue();
+		System.out.println("In Exam getValue right now...\n");
+		for (Question examQuestion : questions) {
+			total += examQuestion.getValue();
 		}
 		return total;
 	}

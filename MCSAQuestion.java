@@ -46,18 +46,26 @@ public class MCSAQuestion extends MCQuestion {
 	}
 
 
-	public Answer getAnswerFromStudent() {
+	public void getAnswerFromStudent() {
 		/**
 		  * Gets an Answer from the student through stdin
 		  */
-		System.out.println("Please enter your answer: \n");
+		System.out.println("Please enter your answer in the form of a letter: \n");
 		Scanner scInput = new Scanner(System.in);
 		char charStdntAns = scInput.findInLine(".").charAt(0);
 		studentAnswer = answers.get(charStdntAns - 0x41);
-		return studentAnswer;
 	}
 
 	public double getValue() {
-		return studentAnswer.getCredit(rightAnswer);
+		System.out.println("In MCSA getValue right now...\n");
+		double value = 0;
+		try {
+			value = studentAnswer.getCredit(this.rightAnswer);
+		}
+		catch (NullPointerException e) {
+			System.out.println("Either studentAnswer or rightAnswer was not set.\n");
+		}
+		// System.out.printf("Answer value: %lf\n", studentAnswer.getCredit(this.rightAnswer));
+		return value;
 	}
 }

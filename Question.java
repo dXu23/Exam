@@ -42,6 +42,7 @@ public abstract class Question {
 		  * @param ans Answer to be right
 		  */
 		this.rightAnswer = ans;
+		System.out.println("In setRightAnswer...\n");
 	}
 
 	// Get Methods
@@ -55,7 +56,7 @@ public abstract class Question {
 		return NewAnswer;
 		*/
 
-	abstract Answer getAnswerFromStudent();
+	abstract void getAnswerFromStudent();
 		/**
 		  * Gets an Answer from the student through stdin
 		  */

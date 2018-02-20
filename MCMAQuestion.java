@@ -56,7 +56,7 @@ public class MCMAQuestion extends MCQuestion {
 		return ans;
 	}
 
-	public Answer getAnswerFromStudent() {
+	public void getAnswerFromStudent() {
 		/**
 		  * Gets an Answer from the student through stdin
 		  */
@@ -68,6 +68,5 @@ public class MCMAQuestion extends MCQuestion {
 			studentAnswer.add(answers.get(position));
 			answers.get(position).setSelected(true);
 		}
-        return answers.get(0);
 	}
 }

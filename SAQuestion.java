@@ -12,11 +12,10 @@ public class SAQuestion extends Question {
 		return ans;
 	}
 
-	public Answer getAnswerFromStudent() {
+	public void getAnswerFromStudent() {
 		Scanner scInput = new Scanner(System.in);
 		String studentInput = scInput.nextLine();
 		this.studentAnswer = new SAAnswer(studentInput);
-        return this.studentAnswer;
 	}
 
 	public double getValue() {
