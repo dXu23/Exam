@@ -28,12 +28,6 @@ public class Exam {
 	}
 	*/
 
-	/*
-	public int getNumQuestions() {
-		return numQuestions;
-	}
-	*/
-
 	// Set Methods
 	public void addQuestion(Question question) {
 		/** Adds Question to Exam class
@@ -60,14 +54,14 @@ public class Exam {
 			for (Question examQuestion : questions) {
 				if (examQuestion instanceof MCQuestion) {
 					System.out.println(examQuestion.getClass().getName());
-                    // examQuestion.reorderAnswers();
+                    ((MCQuestion) examQuestion).reorderAnswers();
 				}
 			}
 		}
 		else {
 			if (questions.get(position) instanceof MCQuestion) {
                 System.out.println(questions.get(position).getClass().getName());
-				// questions.get(position).reorderAnswers();
+				((MCQuestion) questions.get(position)).reorderAnswers();
 			} else {
 				System.out.println("Question was not a MCQuestion\n");
 			}
