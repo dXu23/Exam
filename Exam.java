@@ -98,9 +98,8 @@ public class Exam {
 		  * @param position Question position in the exam
 		  */
 
-		if (questions.get(position) instanceof MCSAQuestion) {
-			questions.get(position).getAnswerFromStudent();
-		}
+		System.out.printf("For question %d\n", position + 1);
+		questions.get(position).getAnswerFromStudent();
 	}
 
 /*
@@ -118,7 +117,7 @@ public class Exam {
 		  @return Total score of Exam. 
 		  */
 		double total = 0;
-		System.out.println("In Exam getValue right now...\n");
+		// System.out.println("In Exam getValue right now...\n");
 		for (Question examQuestion : questions) {
 			total += examQuestion.getValue();
 		}

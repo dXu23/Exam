@@ -57,7 +57,7 @@ public class MCSAQuestion extends MCQuestion {
 	}
 
 	public double getValue() {
-		System.out.println("In MCSA getValue right now...\n");
+		// System.out.println("In MCSA getValue right now...\n");
 		double value = 0;
 		try {
 			value = studentAnswer.getCredit(this.rightAnswer);

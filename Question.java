@@ -10,8 +10,6 @@ public abstract class Question {
 	protected Answer rightAnswer;
 	protected Answer studentAnswer;
 	protected double maxValue;
-	// private int N;
-	// private int numAns;
 
 	// Constructor
 	protected Question(String text, double maxValue) {
@@ -42,7 +40,7 @@ public abstract class Question {
 		  * @param ans Answer to be right
 		  */
 		this.rightAnswer = ans;
-		System.out.println("In setRightAnswer...\n");
+		// System.out.println("In setRightAnswer...\n");
 	}
 
 	// Get Methods
