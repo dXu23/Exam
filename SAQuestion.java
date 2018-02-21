@@ -31,7 +31,7 @@ public class SAQuestion extends Question {
 		  * standard input which will be the answer
 		  * of the student. 
 		  */
-		System.out.println("Please enter your answer.");
+		System.out.println("Please enter your short answer as text input:");
 		Scanner scInput = new Scanner(System.in);
 		String studentInput = scInput.nextLine();
 		this.studentAnswer = new SAAnswer(studentInput);

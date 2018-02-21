@@ -4,30 +4,23 @@
 abstract class Answer {
 
 	// Constructor 
+	/**
+	 * Constructs an Answer object
+	 */
 	protected Answer() {
 	}
 
+	/**
+	  * Prints the Answer
+	  */
 	abstract void print();
-		/**
-		  * Prints the Answer
-		  */
 
-	// Get Methods
+	/**
+	 * Gets credit for a Answer object by comparing it to a rightAnswer object
+	 * @param rightAnswer right Answer to be compared to this Answer
+	 * @return Credit given to the Answer
+	 */
 	abstract double getCredit(Answer rightAnswer);
-		/**
-		  * Gets credit for Answer
-		  */
-
-	// Set Methods
-
-	/*
-	public void setValue(double selectedValue, double unselectedValue) {
-		_selectedValue = selectedValue;
-		_unselectedValue = unselectedValue;
-	}
-	*/
-
-
 
 }
 

@@ -20,12 +20,13 @@ public abstract class MCQuestion extends Question {
 		/**
 		  * Adds an answer to the Question
 		  * @param MCA Answer to be added
-		  * @return Nothing
 		  */
 
+		/*
 		if (answers == null) {
 			System.out.println("Answers was null");
 		}
+		*/
 		System.out.println("Answers was not null");
 		answers.add(MCA);
 	}
@@ -49,10 +50,8 @@ public abstract class MCQuestion extends Question {
 		for (MCAnswer ans: answers) {
 			if (ans.selected) {
 				System.out.printf("[%c]. ", i + 0x41);
-                // System.out.printf("i: %d\n", (int) i - 0x41);
 			} else {
 				System.out.printf("(%c). ", i + 0x41);
-                // System.out.printf("i: %d\n", (int) i - 0x41);
 			}
             answers.get(i).print();
             System.out.print("\n");

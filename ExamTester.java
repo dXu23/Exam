@@ -1,5 +1,6 @@
-/** @author Daniel Xu
-    @version 1.1
+/** ExamTester.java
+  * @author Daniel Xu
+  * @version 2.0
 */
 
 import java.io.*;
