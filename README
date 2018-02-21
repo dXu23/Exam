@@ -1,7 +1,7 @@
 :Author: Daniel Xu
 :NetId: dxu23
 
-CS 342 homework 1
+CS 342 homework 2
 -----------------
 
 To compile a file into a class, simply type 'make file.class'. To run the ExamTester class, type 'make test'. 

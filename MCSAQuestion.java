@@ -55,14 +55,21 @@ public class MCSAQuestion extends MCQuestion {
 		System.out.println("Please enter your answer in the form of a letter: \n");
 		Scanner scInput = new Scanner(System.in);
 		char charStdntAns = scInput.findInLine(".").charAt(0);
-		studentAnswer = answers.get(charStdntAns - 0x41);
+		int arrayAnswerIndex = (int) charStdntAns - 0x41;
+		int arrayMaxIndex = answers.size() - 1;
+		while ((arrayAnswerIndex < 0) || (arrayAnswerIndex > arrayMaxIndex)) {
+			scInput = new Scanner(System.in);
+			charStdntAns = scInput.findInLine(".").charAt(0);
+			arrayAnswerIndex = (int) charStdntAns - 0x41;
+		}
+		studentAnswer = answers.get(arrayAnswerIndex);
 	}
 
 	public double getValue() {
 		// System.out.println("In MCSA getValue right now...\n");
 		double value = 0;
 		try {
-			value = studentAnswer.getCredit(this.rightAnswer);
+			value = maxValue * studentAnswer.getCredit(this.rightAnswer);
 		}
 		catch (NullPointerException e) {
 			System.out.println("Either studentAnswer or rightAnswer was not set.\n");

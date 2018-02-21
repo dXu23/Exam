@@ -11,6 +11,9 @@ public class SAAnswer extends Answer {
 	}
 
 	public double getCredit(Answer rightAnswer) {
+		if (this.equals(rightAnswer)) {
+			return ;
+		}
         return 2;
 	}
 }

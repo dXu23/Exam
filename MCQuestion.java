@@ -23,6 +23,10 @@ public abstract class MCQuestion extends Question {
 		  * @return Nothing
 		  */
 
+		if (answers == null) {
+			System.out.println("Answers was null");
+		}
+		System.out.println("Answers was not null");
 		answers.add(MCA);
 	}
 
@@ -37,21 +41,9 @@ public abstract class MCQuestion extends Question {
 		aArray[posSecond] = tempAns;
 	}
 
-	public void reorderAnswers() {
-		Collections.shuffle();
-		Random rand = new Random();
-		int randNumA;
-		int randNumB;
-		int iterTotal = N * 4;
-		for (int i = 0; i < iterTotal; i++) {
-			randNumA = rand.nextInt(N);
-			randNumB = rand.nextInt(N);
-			swapAnswers(randNumA, randNumB);
-		}
-	}
 	*/
 	public void print() {
-		System.out.printf("%s\n", text);
+		super.print();
 		// System.out.printf("numAns: %d\n", numAns);
 		int i = 0;
 		for (MCAnswer ans: answers) {
