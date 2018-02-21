@@ -3,12 +3,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class MCMAQuestion extends MCQuestion {
 	// Members
-	protected ArrayList<Answer> studentAnswer;
-	protected ArrayList<Answer> rightAnswer;
+	protected ArrayList<MCMAAnswer> studentAnswer;
+	protected ArrayList<MCMAAnswer> rightAnswer;
 
 	// Constructor(s)
 	MCMAQuestion(String text, double maxValue) {
 		super(text, maxValue);
+		studentAnswer = new ArrayList<MCMAAnswer>();
+		if (this.studentAnswer == null) {
+			System.out.println("studentAnswer was null");
+		}
+		System.out.println("In MCMAQuestion constructor");
+		System.out.println("3.141592653589793238462643383279502884197169399375105820974944592307");
+		rightAnswer = new ArrayList<MCMAAnswer>();
 	}
 
 	MCMAQuestion(String text) {
@@ -67,7 +74,22 @@ public class MCMAQuestion extends MCQuestion {
 			position = scInput.next().charAt(0) - 0x41;
 			System.out.println("In getAnswerFromStudent...\n");
 			System.out.printf("position: %d\n", position);
-			studentAnswer.add(answers.get(position));
+			System.out.println("Hello, world!\n");
+			/*
+			if (answers == null) {
+				System.out.println("answers.get(position) was null\n");
+			}
+			System.out.println("Goodbye, world");
+			System.out.println("Eat flaming death.\n");
+			System.out.println("Goodbye, world");
+			*/
+			if (studentAnswer == null) {
+				System.out.println("studentAnswer was null");
+			}
+			System.out.println(studentAnswer.getClass().getName());
+			// System.out.println(this.studentAnswer.getClass().getName());
+			studentAnswer.add((MCMAAnswer) answers.get(position));
+			System.out.println("After adding in getAnswerFromStudent");
 			answers.get(position).setSelected(true);
 		}
 	}

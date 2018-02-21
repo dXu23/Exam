@@ -32,40 +32,14 @@ public class ExamTester {
 		mcsaq.getNewAnswer("32", 0);
 		newExam.addQuestion(mcsaq);
 
-		// Third Question
-		mcsaq = new MCSAQuestion("How many steps are in the first flight of UIC's library?");
-		mcsaq.getNewAnswer("9", 0);
-		mcsaq.setRightAnswer(mcsaq.getNewAnswer("15", 1));
-		mcsaq.getNewAnswer("13", 0);
-		mcsaq.getNewAnswer("10", 0);
-		mcsaq.getNewAnswer("42", 0);
-		newExam.addQuestion(mcsaq);
+		SAQuestion saq = new SAQuestion("What OO principle is implemented with private variables?", 1);
+		saq.setRightAnswer(saq.getNewAnswer("Information Hiding"));
+		newExam.addQuestion(saq);
 
-		// Fourth Question
-		mcsaq = new MCSAQuestion("What is the speed of light in m/s ?");
-		mcsaq.setRightAnswer(mcsaq.getNewAnswer("299792458", 1));
-		mcsaq.getNewAnswer("186282", 0.5);
-		mcsaq.getNewAnswer("9192631770", 0);
-		mcsaq.getNewAnswer("9.10938215 * 10^{-31}", 0);
-		newExam.addQuestion(mcsaq);
+		saq = new SAQuestion("What did 8 bytes say to the bartender?", 1);
+		saq.setRightAnswer(saq.getNewAnswer("Make us a double"));
+		newExam.addQuestion(saq);
 
-		// Fifth Question
-		mcsaq = new MCSAQuestion("What is the ASCII encoding in hexadecimal for 'Hello world!'?");
-		mcsaq.getNewAnswer("0x4920646f6e2774206b6e6f772e", 0);
-		mcsaq.setRightAnswer(mcsaq.getNewAnswer("0x48656c6c6f20776f626c6421", 1));
-		mcsaq.getNewAnswer("0x466f6f2062617221", 0);
-		mcsaq.getNewAnswer("0x54686973206578616d2064756d622e", 0);
-		mcsaq.getNewAnswer("4f6e6520646f6573206e6f742073696d707c792062616c616e63652062696e61727920736561726368207472656573", 0);
-		newExam.addQuestion(mcsaq);
-
-		// Sixth Question
-		MCMAQuestion mcmaq = new MCMAQuestion("Which of the the following will be prizes at the CS Scavenger hosted by WICS?");
-		mcmaq.setRightAnswer(mcmaq.getNewAnswer("VR Headset", 1));
-		mcmaq.getNewAnswer("T-1000", 0);
-		mcmaq.getNewAnswer("4096 Drummers Drumming", 0);
-		mcmaq.getNewAnswer("1024 Lords a-Leaping", 0);
-		mcmaq.getNewAnswer("Raspberry Pi", 1);
-		newExam.addQuestion(mcmaq);
 
 		// Step 2: Print the Exam
 		System.out.println("Step 2: Printing exam...\n");
@@ -82,8 +56,6 @@ public class ExamTester {
 		newExam.getAnswerFromStudent(1);
 		newExam.getAnswerFromStudent(2);
 		newExam.getAnswerFromStudent(3);
-		newExam.getAnswerFromStudent(4);
-		newExam.getAnswerFromStudent(5);
 
 		// Step 4: Select Answer to some or all of questions
 
@@ -91,6 +63,7 @@ public class ExamTester {
 
 		// Step 5
 		System.out.println("Grading exam...\n");
-		System.out.printf("Score: %f\n", newExam.getValue());
+		newExam.reportQuestionValues();
+		// System.out.printf("Score: %f\n", newExam.getValue());
 	}
 }

@@ -28,5 +28,8 @@ public class SAQuestion extends Question {
 		if (this.equals(rightAnswer)) {
 			return maxValue;
 		}
+		else {
+			return 0;
+		}
 	}
 }

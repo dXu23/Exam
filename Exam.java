@@ -118,20 +118,20 @@ public class Exam {
 	}
 
 	public void reportQuestionValues() {
+		int i = 1;
 		System.out.print(
-				"+===============+===========+\n" +
-				"|    Question   |   Value   |\n" +
-				"+===============+===========+");
-		int i = 0;
+				"+===============+============+\n" +
+				"|    Question   |   Value    |\n" +
+				"+===============+============+\n");
 		for (Question examQuestion : questions) {
 			System.out.printf(
-					"|      %d       |    %lf    |" + 
-					"+---------------+-----------+", i, examQuestion.getValue());
+					"|       %d       |  %f  |\n" + 
+					"+---------------+------------+\n", i, examQuestion.getValue());
 			i++;
 		}
 		System.out.printf(
-				"|     Total     |    %lf    |" +
-				"+---------------+-----------+", getValue());
+				"|     Total     |  %f  |\n" +
+				"+---------------+------------+\n", getValue());
 	}
 }
 
