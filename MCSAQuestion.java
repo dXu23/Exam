@@ -52,12 +52,13 @@ public class MCSAQuestion extends MCQuestion {
 		/**
 		  * Gets an Answer from the student through stdin
 		  */
-		System.out.println("Please enter your answer in the form of a letter: \n");
+		System.out.println("Please enter your answer in the form of a letter: ");
 		Scanner scInput = new Scanner(System.in);
 		char charStdntAns = scInput.findInLine(".").charAt(0);
 		int arrayAnswerIndex = (int) charStdntAns - 0x41;
 		int arrayMaxIndex = answers.size() - 1;
 		while ((arrayAnswerIndex < 0) || (arrayAnswerIndex > arrayMaxIndex)) {
+			System.out.println("You enter an invalid answer. Please try again.");
 			scInput = new Scanner(System.in);
 			charStdntAns = scInput.findInLine(".").charAt(0);
 			arrayAnswerIndex = (int) charStdntAns - 0x41;

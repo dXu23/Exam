@@ -13,7 +13,19 @@ ExamTester.class: ExamTester.java
 	$(JC) $(JFLAGS) ExamTester.java
 
 Exam.class: Exam.java
-	$(JC) $(JFLAGS)Exam.java
+	$(JC) $(JFLAGS) Exam.java
+
+MCQuestion.class: MCQuestion.java
+	$(JC) $(JFLAGS) MCQuestion.java
+
+MCAnswer.class: MCAnswer.java
+	$(JC) $(JFLAGS) MCAnswer.java
+
+SAQuestion.class: SAQuestion.java
+	$(JC) $(JFLAGS) SAQuestion.java
+					 
+SAAnswer.class: SAAnswer.java
+	$(JC) $(JFLAGS) SAAnswer.java
 
 Question.class: Question.java
 	$(JC) $(JFLAGS)Question.java

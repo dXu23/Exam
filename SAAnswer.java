@@ -1,19 +1,41 @@
-
+import java.io.*;
 public class SAAnswer extends Answer {
 	protected String text;
 
 	public SAAnswer(String text) {
+		/** SAAnswer constructor */
 		this.text = text;
 	}
 
 	public void print() {
+		/** prints out the answer
+		  */
 		System.out.printf("%s", text);
 	}
 
 	public double getCredit(Answer rightAnswer) {
-		if (this.equals(rightAnswer)) {
-			return 2;
+		/** Gets credit of a particular answer
+		  * by comparing it to the right answer
+		  * @param rightAnswer right Answer that is to be compared to this answer
+		  */
+		//System.out.printf("studentAnswer: %s", this.text);
+		/*
+		byte []stdntAnsBytes = this.text.getBytes();
+		for (byte b: stdntAnsBytes) {
+			System.out.println(b);
 		}
-        return 2;
+		*/
+		//System.out.printf("rightAnswer: %s", ((SAAnswer) rightAnswer).text);
+		/*
+		byte []rightAnsBytes = ((SAAnswer) rightAnswer).text.getBytes();
+		for (byte b: rightAnsBytes) {
+			System.out.println(b);
+		}
+		*/
+		if (text.toUpperCase().equals(((SAAnswer) rightAnswer).text.toUpperCase())) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 }

@@ -42,7 +42,7 @@ public class ExamTester {
 
 
 		// Step 2: Print the Exam
-		System.out.println("Step 2: Printing exam...\n");
+		System.out.println("Step 2: Printing exam...");
 		newExam.print();
 
 		// Step 3: Reorder questions on exam and answers. Then print

@@ -55,8 +55,9 @@ public abstract class MCQuestion extends Question {
                 // System.out.printf("i: %d\n", (int) i - 0x41);
 			}
             answers.get(i).print();
-            System.out.println("\n");
+            System.out.print("\n");
             i++;
 		}
+		System.out.print("\n");
 	}
 }
