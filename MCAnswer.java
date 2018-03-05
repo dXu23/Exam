@@ -41,4 +41,18 @@ public abstract class MCAnswer extends Answer {
 		this.selected = selected;
 	}
 
+	/**
+	 * gets the credit for a student's answer
+	 * @param rightAnswer MCSAAnswer object that will be compared to the student's answer
+	 * @return credit the student will receive. 
+	 *
+	 */
+	public double getCredit(Answer rightAnswer) {
+		if (this.equals(rightAnswer) || this.selected) {
+			return creditIfSelected;
+		} else {
+			return 0;
+		}
+	}
+
 }

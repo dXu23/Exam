@@ -36,13 +36,15 @@ public abstract class MCQuestion extends Question {
 	}
 
 	/*
-	private void swapAnswers(int posFirst, int posSecond) {
-		Answer tempAns = aArray[posFirst];
-		aArray[posFirst] = aArray[posSecond];
-		aArray[posSecond] = tempAns;
+	public double getValue(Answer MCans) {
+		for (Answer loopMCAns : answers) {
+			if (MCans.equals(loopMCAns)) {
+				return MCans;
+			}
+		}
 	}
-
 	*/
+
 	public void print() {
 		super.print();
 		// System.out.printf("numAns: %d\n", numAns);
