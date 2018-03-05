@@ -83,6 +83,8 @@ public class MCSAQuestion extends MCQuestion {
 	 * @return value of MCSAQuestion object
 	 */
 	public double getValue() {
+		return super.getValue((MCSAAnswer) studentAnswer );
+		/*
 		double value = 0;
 		try {
 			value = maxValue * studentAnswer.getCredit(this.rightAnswer);
@@ -91,5 +93,6 @@ public class MCSAQuestion extends MCQuestion {
 			System.out.println("Either studentAnswer or rightAnswer was not set.\n");
 		}
 		return value;
+		*/
 	}
 }

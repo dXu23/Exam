@@ -13,8 +13,8 @@ public class MCMAQuestion extends MCQuestion {
 		if (this.studentAnswer == null) {
 			System.out.println("studentAnswer was null");
 		}
-		System.out.println("In MCMAQuestion constructor");
-		System.out.println("3.141592653589793238462643383279502884197169399375105820974944592307");
+		// System.out.println("In MCMAQuestion constructor");
+		// System.out.println("3.141592653589793238462643383279502884197169399375105820974944592307");
 		rightAnswer = new ArrayList<MCMAAnswer>();
 	}
 

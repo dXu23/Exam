@@ -27,23 +27,26 @@ public abstract class MCQuestion extends Question {
 			System.out.println("Answers was null");
 		}
 		*/
-		System.out.println("Answers was not null");
+		// System.out.println("Answers was not null");
 		answers.add(MCA);
 	}
 
 	public void reorderAnswers() {
+		/**
+		 * reorders MCAnswers in MCQuestion
+		 */
+
 		Collections.shuffle(answers);
 	}
 
-	/*
-	public double getValue(Answer MCans) {
+	public double getValue(MCAnswer MCAns) {
 		for (Answer loopMCAns : answers) {
-			if (MCans.equals(loopMCAns)) {
-				return MCans;
+			if (MCAns.getCredit(loopMCAns) != 0) {
+				return MCAns.getCredit(loopMCAns) * maxValue;
 			}
 		}
+		return 0;
 	}
-	*/
 
 	public void print() {
 		super.print();
