@@ -41,6 +41,15 @@ public class SAQuestion extends Question {
 		/** Calculates the value of the SAQuestion object
 		  * after student has entered in an answer
 		  */
-		return maxValue * studentAnswer.getCredit(rightAnswer);
+		double value = 0;
+		try {
+			value = maxValue * studentAnswer.getCredit(rightAnswer);
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			System.out.println(e);
+			System.out.println("getAnswerFromStudent was likely not called for SAQuestion.java");
+			System.exit(0);
+		}
+		return value;
 	}
 }
