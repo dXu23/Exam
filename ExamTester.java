@@ -67,6 +67,7 @@ public class ExamTester {
 		newExam.getAnswerFromStudent(1);
 		newExam.getAnswerFromStudent(2);
 		newExam.getAnswerFromStudent(3);
+		newExam.getAnswerFromStudent(4);
 
 		// Step 4: Select Answer to some or all of questions
 

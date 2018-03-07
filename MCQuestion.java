@@ -44,6 +44,9 @@ public abstract class MCQuestion extends Question {
 			if (loopMCAns == null) {
 				System.out.println("loopMCAns was null");
 			}
+			if (MCAns == null) {
+				System.out.println("MCAns was null");
+			}
 			if (MCAns.getCredit(loopMCAns) != 0.0) {
 				return MCAns.getCredit(loopMCAns) * maxValue;
 			}

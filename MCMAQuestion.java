@@ -27,9 +27,12 @@ public class MCMAQuestion extends MCQuestion {
 	public double getValue() {
 		double value = baseCredit;
 		// int len = aArray.length;
+		int i = 0;
 		for (MCMAAnswer studentAns: studentAnswer) {
 			value += super.getValue((MCMAAnswer) studentAns);
-			}
+			System.out.printf("i: %d\n", i);
+			i++;
+		}
 		// System.out.println("In getValue right now...");
 		return value;
 	}
