@@ -72,23 +72,30 @@ public class MCMAQuestion extends MCQuestion {
 		  */
 		System.out.println("Please enter the answer(s) you think are correct: \n");
 		Scanner scInput = new Scanner(System.in);
-		String[] tokenizedAns = scInput.nextLine().split("\\s*,*\\s*");
+		// String[] tokenizedAns = scInput.nextLine().split("\\s*,*\\s*");
 		int position = 0;
 		int answersSize = answers.size();
-		for (String ansString : tokenizedAns) {
+		String charAns = scInput.findInLine("[a-zA-Z]");
+		while (charAns != null) {
 			// System.out.println("scInput:" + scInput.next());
+			/*
 			System.out.printf("ansString: %s\n", ansString);
 			byte []bytes = ansString.getBytes();
 			for (byte b:bytes) {
 				System.out.println(b);
 			}
-			/*
-			position = ansString.charAt(0) - 0x41;
+			*/
+			position = charAns.toUpperCase().charAt(0) - 0x41;
 			System.out.println("In getAnswerFromStudent...\n");
 			System.out.printf("position: %d\n", position);
 			if ((position < 0) || (position > answersSize - 1)) {
+				System.out.println("Invalid answer letter was entered");
+			} else {
+				studentAnswer.add((MCMAAnswer) answers.get(position));
+				System.out.println("After adding in getAnswerFromStudent");
+				answers.get(position).setSelected(true);
 			}
-			*/
+			charAns = scInput.findInLine("[a-zA-Z]");
 			//System.out.println("Hello, world!\n");
 			/*
 			if (answers == null) {
@@ -101,9 +108,6 @@ public class MCMAQuestion extends MCQuestion {
 			}
 			System.out.println(studentAnswer.getClass().getName());
 			// System.out.println(this.studentAnswer.getClass().getName());
-			studentAnswer.add((MCMAAnswer) answers.get(position));
-			System.out.println("After adding in getAnswerFromStudent");
-			answers.get(position).setSelected(true);
 			*/
 		}
 	}
