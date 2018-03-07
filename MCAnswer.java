@@ -31,7 +31,7 @@ public abstract class MCAnswer extends Answer {
 	 * prints out text of MCAnswer
 	 */
 	public void print() { 
-		System.out.printf("%s\n", text);
+		System.out.printf("%s", text);
 	}
 
 	/** Sets Answer to be selected

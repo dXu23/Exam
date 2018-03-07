@@ -4,18 +4,20 @@ import java.util.Scanner;
 public class MCMAQuestion extends MCQuestion {
 	// Members
 	protected ArrayList<MCMAAnswer> studentAnswer;
-	protected ArrayList<MCMAAnswer> rightAnswer;
+	public double baseCredit;
+	// protected ArrayList<MCMAAnswer> rightAnswer;
 
 	// Constructor(s)
-	MCMAQuestion(String text, double maxValue) {
+	MCMAQuestion(String text, double maxValue, double baseCredit) {
 		super(text, maxValue);
+		this.baseCredit = baseCredit;
 		studentAnswer = new ArrayList<MCMAAnswer>();
+		/*
 		if (this.studentAnswer == null) {
 			System.out.println("studentAnswer was null");
 		}
-		// System.out.println("In MCMAQuestion constructor");
-		// System.out.println("3.141592653589793238462643383279502884197169399375105820974944592307");
-		rightAnswer = new ArrayList<MCMAAnswer>();
+		*/
+		// rightAnswer = new ArrayList<MCMAAnswer>();
 	}
 
 	MCMAQuestion(String text) {
@@ -23,14 +25,12 @@ public class MCMAQuestion extends MCQuestion {
 	}
 
 	public double getValue() {
-		double value = 0;
+		double value = baseCredit;
 		// int len = aArray.length;
-		for (Answer studentAns: studentAnswer) {
-			for (Answer rightAns: rightAnswer) {
-				if (studentAns.equals(rightAns)) {
-				}
+		for (MCMAAnswer studentAns: studentAnswer) {
+			value += super.getValue((MCMAAnswer) studentAns);
 			}
-		}
+		// System.out.println("In getValue right now...");
 		return value;
 	}
 
@@ -67,21 +67,28 @@ public class MCMAQuestion extends MCQuestion {
 		/**
 		  * Gets an Answer from the student through stdin
 		  */
-		System.out.println("Please enter the answers you think are correct: \n");
-		Scanner scInput = new Scanner(System.in).useDelimiter("\\s*,*\\s*");
+		System.out.println("Please enter the answer(s) you think are correct: \n");
+		Scanner scInput = new Scanner(System.in);
+		String[] tokenizedAns = scInput.nextLine().split("\\s*,*\\s*");
 		int position = 0;
-		while (scInput.hasNext()) {
-			position = scInput.next().charAt(0) - 0x41;
+		int answersSize = answers.size();
+		for (String ansString : tokenizedAns) {
+			// System.out.println("scInput:" + scInput.next());
+			System.out.printf("ansString: %s\n", ansString);
+			position = ansString.charAt(0) - 0x41;
 			System.out.println("In getAnswerFromStudent...\n");
 			System.out.printf("position: %d\n", position);
-			System.out.println("Hello, world!\n");
+			/*
+			if ((position < 0) || (position > answersSize - 1)) {
+			}
+			*/
+			//System.out.println("Hello, world!\n");
 			/*
 			if (answers == null) {
 				System.out.println("answers.get(position) was null\n");
 			}
 			System.out.println("Goodbye, world");
 			System.out.println("Eat flaming death.\n");
-			System.out.println("Goodbye, world");
 			*/
 			if (studentAnswer == null) {
 				System.out.println("studentAnswer was null");

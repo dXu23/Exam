@@ -41,7 +41,10 @@ public abstract class MCQuestion extends Question {
 
 	public double getValue(MCAnswer MCAns) {
 		for (Answer loopMCAns : answers) {
-			if (MCAns.getCredit(loopMCAns) != 0) {
+			if (loopMCAns == null) {
+				System.out.println("loopMCAns was null");
+			}
+			if (MCAns.getCredit(loopMCAns) != 0.0) {
 				return MCAns.getCredit(loopMCAns) * maxValue;
 			}
 		}

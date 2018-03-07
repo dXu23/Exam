@@ -33,14 +33,24 @@ public class ExamTester {
 		mcsaq.getNewAnswer("32", 0);
 		newExam.addQuestion(mcsaq);
 
+		// Third Question
 		SAQuestion saq = new SAQuestion("What OO principle is implemented with private variables?", 1);
 		saq.setRightAnswer(saq.getNewAnswer("Information Hiding"));
 		newExam.addQuestion(saq);
 
+		// Third Question
 		saq = new SAQuestion("What did 8 bytes say to the bartender?", 1);
 		saq.setRightAnswer(saq.getNewAnswer("Make us a double"));
 		newExam.addQuestion(saq);
 
+		// Fourth Question
+		MCMAQuestion mcmaq = new MCMAQuestion("What do you put on a peanut butter and jelly sandwich?", 5, 0);
+		mcmaq.getNewAnswer("Peanut better", 0.5);
+		mcmaq.getNewAnswer("Peanut butter and jelly", 1.0);
+		mcmaq.getNewAnswer("Jelly", 0.5);
+		mcmaq.getNewAnswer("Onions", 0.0);
+		mcmaq.getNewAnswer("Horseradish", 0.0);
+		newExam.addQuestion(mcmaq);
 
 		// Step 2: Print the Exam
 		System.out.println("Step 2: Printing exam...");
