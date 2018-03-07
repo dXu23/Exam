@@ -30,7 +30,7 @@ public class MCMAQuestion extends MCQuestion {
 		int i = 0;
 		for (MCMAAnswer studentAns: studentAnswer) {
 			value += super.getValue((MCMAAnswer) studentAns);
-			System.out.printf("i: %d\n", i);
+			// System.out.printf("i: %d\n", i);
 			i++;
 		}
 		// System.out.println("In getValue right now...");
@@ -78,10 +78,14 @@ public class MCMAQuestion extends MCQuestion {
 		for (String ansString : tokenizedAns) {
 			// System.out.println("scInput:" + scInput.next());
 			System.out.printf("ansString: %s\n", ansString);
+			byte []bytes = ansString.getBytes();
+			for (byte b:bytes) {
+				System.out.println(b);
+			}
+			/*
 			position = ansString.charAt(0) - 0x41;
 			System.out.println("In getAnswerFromStudent...\n");
 			System.out.printf("position: %d\n", position);
-			/*
 			if ((position < 0) || (position > answersSize - 1)) {
 			}
 			*/
@@ -92,7 +96,6 @@ public class MCMAQuestion extends MCQuestion {
 			}
 			System.out.println("Goodbye, world");
 			System.out.println("Eat flaming death.\n");
-			*/
 			if (studentAnswer == null) {
 				System.out.println("studentAnswer was null");
 			}
@@ -101,6 +104,7 @@ public class MCMAQuestion extends MCQuestion {
 			studentAnswer.add((MCMAAnswer) answers.get(position));
 			System.out.println("After adding in getAnswerFromStudent");
 			answers.get(position).setSelected(true);
+			*/
 		}
 	}
 }

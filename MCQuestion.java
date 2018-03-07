@@ -40,18 +40,21 @@ public abstract class MCQuestion extends Question {
 	}
 
 	public double getValue(MCAnswer MCAns) {
-		for (Answer loopMCAns : answers) {
-			if (loopMCAns == null) {
-				System.out.println("loopMCAns was null");
+		double value = 0;
+		try {
+			for (Answer loopMCAns : answers) {
+				if (MCAns.getCredit(loopMCAns) != 0.0) {
+					value = MCAns.getCredit(loopMCAns) * maxValue;
+				}
 			}
-			if (MCAns == null) {
-				System.out.println("MCAns was null");
-			}
-			if (MCAns.getCredit(loopMCAns) != 0.0) {
-				return MCAns.getCredit(loopMCAns) * maxValue;
-			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			System.out.println(e);
+			System.out.println("getAnswerFromStudent was likely not called for some MCQuestion.");
+			System.out.println("You might want to double-check the number of getAnswerFromStudent calls");
+			System.exit(0);
 		}
-		return 0;
+		return value;
 	}
 
 	public void print() {

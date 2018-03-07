@@ -47,7 +47,8 @@ public class SAQuestion extends Question {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			System.out.println(e);
-			System.out.println("getAnswerFromStudent was likely not called for SAQuestion.java");
+			System.out.println("getAnswerFromStudent was likely not called for some SAQuestion.");
+			System.out.println("You might want to double-check the number of getAnswerFromStudent calls");
 			System.exit(0);
 		}
 		return value;
