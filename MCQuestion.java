@@ -1,19 +1,33 @@
+/** 
+ *  Question.java
+ *  @author Daniel Xu
+ *  @version 3.0
+*/
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Collections;
+import java.io.PrintWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public abstract class MCQuestion extends Question {
 	// Members
 	protected ArrayList<MCAnswer> answers;
 	
 	// Constructor
-	MCQuestion(String text, double maxValue) {
+	protected MCQuestion(String text, double maxValue) {
 		super(text, maxValue);
 		answers = new ArrayList<MCAnswer>();
 	}
 
-	MCQuestion(String text) {
+	protected MCQuestion(String text) {
 		this(text, 1);
+	}
+
+	protected MCQuestion(Scanner input) {
+		super(input);
+		answers = new ArrayList<MCAnswer>();
 	}
 
 	public void addAnswer(MCAnswer MCA) {
@@ -22,13 +36,12 @@ public abstract class MCQuestion extends Question {
 		  * @param MCA Answer to be added
 		  */
 
-		/*
-		if (answers == null) {
-			System.out.println("Answers was null");
+		try {
+			answers.add(MCA);
+		} catch(NullPointerException e) {
+			System.out.println("In addAnswer method of MCQuestion class: MCAnswer input was null");
+			e.printStackTrace();
 		}
-		*/
-		// System.out.println("Answers was not null");
-		answers.add(MCA);
 	}
 
 	public void reorderAnswers() {
@@ -50,9 +63,10 @@ public abstract class MCQuestion extends Question {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			System.out.println(e);
-			System.out.println("getAnswerFromStudent was likely not called for some MCQuestion.");
+			System.out.println("getAnswerFromStudent was likely not called for some MCQuestion or student" +
+					"enter answer.");
 			System.out.println("You might want to double-check the number of getAnswerFromStudent calls");
-			System.exit(0);
+			return 0.0;
 		}
 		return value;
 	}
@@ -72,5 +86,14 @@ public abstract class MCQuestion extends Question {
             i++;
 		}
 		System.out.print("\n");
+	}
+
+	public void save(PrintWriter output) {
+		output.printf("%s\n" +
+				"%.1f\n" + 
+				"%s\n", this.getClass().toString().substring(6), this.maxValue, this.text);
+		for (MCAnswer MCans : answers) {
+			MCans.save(output);
+		}
 	}
 }
