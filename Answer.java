@@ -1,6 +1,10 @@
 /** @author Daniel Xu
     @version 1.1
 */
+
+import java.util.Scanner;
+import java.io.PrintWriter;
+
 abstract class Answer {
 
 	// Constructor 
@@ -8,6 +12,9 @@ abstract class Answer {
 	 * Constructs an Answer object
 	 */
 	protected Answer() {
+	}
+
+	public Answer(Scanner input) {
 	}
 
 	/**
@@ -21,6 +28,8 @@ abstract class Answer {
 	 * @return Credit given to the Answer
 	 */
 	abstract double getCredit(Answer rightAnswer);
+
+	public abstract void save(PrintWriter output);
 
 }
 

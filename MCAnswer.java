@@ -1,4 +1,14 @@
+/** 
+ *  Question.java
+ *  @author Daniel Xu
+ *  @version 3.0
+*/
 
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.io.PrintWriter;
+import java.lang.*;
 public abstract class MCAnswer extends Answer {
 	protected String text;
 	protected boolean selected;
@@ -24,7 +34,36 @@ public abstract class MCAnswer extends Answer {
 	 * @param text String to be made the text of MCSAAnswer object
 	 */
 	protected MCAnswer(String text) {
-		this(text, 1);
+		this(text, 0);
+	}
+
+	protected MCAnswer(Scanner input) {
+		double ansVal;
+		String ansText;
+		String MCAnsLine = input.nextLine();
+		// System.out.printf("MCAnsLine: %s\n", MCAnsLine);
+		Pattern ansValPattern = Pattern.compile("^-?0.\\d+");
+		Matcher m = ansValPattern.matcher(MCAnsLine);
+		// System.out.println("In MCAnswer constructor...");
+		// boolean something = false;
+		if (m.find()) {
+			// System.out.println(something);
+			ansVal = Double.parseDouble(m.group(0));
+		} else {
+			ansVal = 0.0;
+		}
+		int firstSpace = MCAnsLine.indexOf(" ");
+		ansText = MCAnsLine.substring(firstSpace + 1);
+
+		if ((ansVal < 0) || (ansVal > 1)) {
+			this.creditIfSelected = 0;
+		} else {
+			this.creditIfSelected = ansVal;
+		}
+		this.selected = false;
+		this.text = ansText;
+		// System.out.printf("text: %s\n", this.text);
+		// System.out.printf("creditIfSelected: %.3f\n", this.creditIfSelected);
 	}
 
 	/**
@@ -55,4 +94,9 @@ public abstract class MCAnswer extends Answer {
 		}
 	}
 
+	public void save(PrintWriter output) {
+		output.printf("%.1f %s\n", this.creditIfSelected, this.text);
+	}
+
 }
+

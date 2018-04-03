@@ -1,10 +1,16 @@
 import java.io.*;
+import java.util.Scanner;
+
 public class SAAnswer extends Answer {
 	protected String text;
 
 	public SAAnswer(String text) {
 		/** SAAnswer constructor */
 		this.text = text;
+	}
+
+	public SAAnswer(Scanner input) {
+		this.text = input.nextLine();
 	}
 
 	public void print() {
@@ -38,4 +44,9 @@ public class SAAnswer extends Answer {
 			return 0;
 		}
 	}
+
+	public void save(PrintWriter output) {
+		output.printf("%s\n", text);
+	}
+
 }

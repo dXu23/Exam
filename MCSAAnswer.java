@@ -1,8 +1,10 @@
 /** 
 *  Question.java
 *  @author Daniel Xu
-*  @version 2.0
+*  @version 3.0
 */
+
+import java.util.Scanner;
 public class MCSAAnswer extends MCAnswer {
 
 	/**
@@ -16,6 +18,10 @@ public class MCSAAnswer extends MCAnswer {
         // System.out.printf("text: %s\n", this.text);
 	}
 
+	public MCSAAnswer(Scanner input) {
+		super(input);
+	}
+
 	/**
 	 * Constructs a MCSAAnswer object with a creditIfSelected value
 	 * of 0 when given a String input
@@ -24,13 +30,6 @@ public class MCSAAnswer extends MCAnswer {
 	 */
 	public MCSAAnswer(String text) {
 		this(text, 0);
-	}
-
-	/**
-	 * Prints out the text of the MCSAAnswer object
-	 */
-	public void print() {
-		System.out.printf("%s", text);
 	}
 
 }

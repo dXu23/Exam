@@ -1,9 +1,11 @@
 /** 
-*  Question.java
-*  @author Daniel Xu
-*  @version 2.0
+ *  Question.java
+ *  @author Daniel Xu
+ *  @version 3.0
 */
 import java.util.Random;
+import java.util.Scanner;
+import java.io.PrintWriter;
 
 public abstract class Question {
 	protected String text;
@@ -25,35 +27,48 @@ public abstract class Question {
 		this(text, 1);
 	}
 
+	protected Question(Scanner input) {
+		this.maxValue = input.nextDouble();
+		input.nextLine();
+		this.text = input.nextLine();
+	}
+
 	/**
 	 * Prints out the text of the Question object
 	 */
 	public void print() {
-		System.out.printf("%s\n", text);
+		try {
+			System.out.printf("%s\n", text);
+		} catch(NullPointerException e) {
+			System.out.println("text is null\n");
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	  * Sets the right answer of question. 
 	  * @param ans Answer to be right
 	  */
-	void setRightAnswer(Answer ans) {
+	public void setRightAnswer(Answer ans) {
 		this.rightAnswer = ans;
 	}
 
 	/**
 	  * @return Answer object suitably matched to question type
 	  */
-	abstract Answer getNewAnswer();
+	public abstract Answer getNewAnswer();
 
 	/**
 	  * Gets an Answer from the student through stdin
 	  */
-	abstract void getAnswerFromStudent();
+	public abstract void getAnswerFromStudent();
 
 	/** Returns value of Question
 	  * @return Value of question
 	  */
-	abstract double getValue();
+	public abstract double getValue();
+
+	public abstract void save(PrintWriter output);
 
 }
 

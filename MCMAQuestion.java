@@ -1,17 +1,21 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.io.PrintWriter;
+import java.lang.*;
 public class MCMAQuestion extends MCQuestion {
 	// Members
 	protected ArrayList<MCMAAnswer> studentAnswer;
-	public double baseCredit;
+	protected double baseCredit;
 	// protected ArrayList<MCMAAnswer> rightAnswer;
 
 	// Constructor(s)
-	MCMAQuestion(String text, double maxValue, double baseCredit) {
+	public MCMAQuestion(String text, double maxValue, double baseCredit) {
 		super(text, maxValue);
 		this.baseCredit = baseCredit;
-		studentAnswer = new ArrayList<MCMAAnswer>();
+		this.studentAnswer = new ArrayList<MCMAAnswer>();
 		/*
 		if (this.studentAnswer == null) {
 			System.out.println("studentAnswer was null");
@@ -20,8 +24,21 @@ public class MCMAQuestion extends MCQuestion {
 		// rightAnswer = new ArrayList<MCMAAnswer>();
 	}
 
-	MCMAQuestion(String text) {
-		super(text);
+	public MCMAQuestion(String text) {
+		this(text, 1, 0);
+	}
+
+	MCMAQuestion(Scanner input) {
+		super(input);
+		this.baseCredit = input.nextDouble();
+		this.studentAnswer = new ArrayList<MCMAAnswer>();
+		int numAns = input.nextInt();
+		input.nextLine();
+		Pattern ansValPattern = Pattern.compile("^-?0\\.\\d+");
+		// while double is found on each line, get contents of this line. Then advance to nextline. 
+		for (int i = 0; i < numAns; i++) {
+			this.addAnswer((MCAnswer) new MCMAAnswer(input));
+		}
 	}
 
 	public double getValue() {
@@ -29,7 +46,14 @@ public class MCMAQuestion extends MCQuestion {
 		// int len = aArray.length;
 		int i = 0;
 		for (MCMAAnswer studentAns: studentAnswer) {
-			value += super.getValue((MCMAAnswer) studentAns);
+			try {
+				value += super.getValue((MCMAAnswer) studentAns);
+			} 
+			catch(NullPointerException e) {
+				System.out.println("Answer input into getValue method of class MCQuestion was null");
+				e.printStackTrace();
+			}
+
 			// System.out.printf("i: %d\n", i);
 			i++;
 		}
@@ -71,11 +95,10 @@ public class MCMAQuestion extends MCQuestion {
 		  * Gets an Answer from the student through stdin
 		  */
 		System.out.println("Please enter the answer(s) you think are correct: \n");
-		Scanner scInput = new Scanner(System.in);
 		// String[] tokenizedAns = scInput.nextLine().split("\\s*,*\\s*");
 		int position = 0;
 		int answersSize = answers.size();
-		String charAns = scInput.findInLine("[a-zA-Z]");
+		String charAns = ScannerFactory.getKeyboardScanner().findInLine("[a-zA-Z]");
 		while (charAns != null) {
 			// System.out.println("scInput:" + scInput.next());
 			/*
@@ -86,23 +109,24 @@ public class MCMAQuestion extends MCQuestion {
 			}
 			*/
 			position = charAns.toUpperCase().charAt(0) - 0x41;
-			System.out.println("In getAnswerFromStudent...\n");
 			System.out.printf("position: %d\n", position);
 			if ((position < 0) || (position > answersSize - 1)) {
 				System.out.println("Invalid answer letter was entered");
 			} else {
-				studentAnswer.add((MCMAAnswer) answers.get(position));
-				System.out.println("After adding in getAnswerFromStudent");
+				try {
+					studentAnswer.add((MCMAAnswer) answers.get(position));
+					System.out.println("After adding in getAnswerFromStudent");
+				} catch(NullPointerException e) {
+					System.out.println("answer specified by position was null when trying to add to studentAnswer");
+					e.printStackTrace();
+				}
 				answers.get(position).setSelected(true);
 			}
-			charAns = scInput.findInLine("[a-zA-Z]");
-			//System.out.println("Hello, world!\n");
+			charAns = ScannerFactory.getKeyboardScanner().findInLine("[a-zA-Z]");
 			/*
 			if (answers == null) {
 				System.out.println("answers.get(position) was null\n");
 			}
-			System.out.println("Goodbye, world");
-			System.out.println("Eat flaming death.\n");
 			if (studentAnswer == null) {
 				System.out.println("studentAnswer was null");
 			}
@@ -110,5 +134,12 @@ public class MCMAQuestion extends MCQuestion {
 			// System.out.println(this.studentAnswer.getClass().getName());
 			*/
 		}
+		ScannerFactory.getKeyboardScanner().nextLine();
+		// Advance Scanner to next line, so question coming after this one will parse input instead 
+		// just getting an EOL character. 
+	}
+
+	public void save(PrintWriter output) {
+		super.save(output);
 	}
 }

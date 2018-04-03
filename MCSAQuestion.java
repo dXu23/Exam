@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.io.PrintWriter;
+import java.lang.*;
 public class MCSAQuestion extends MCQuestion {
 
 	/**
@@ -13,6 +17,38 @@ public class MCSAQuestion extends MCQuestion {
 
 	public MCSAQuestion(String text) {
 		this(text, 1);
+	}
+
+	public MCSAQuestion(Scanner input) {
+		super(input);
+		System.out.printf("text: %s\n", this.text);
+		System.out.printf("maxValue: %s\n", this.maxValue);
+		int numAns = input.nextInt();
+		System.out.printf("numAns: %d\n", numAns);
+		input.nextLine();
+		MCSAAnswer answerToAdd;
+		// Pattern ansValPattern = Pattern.compile("^-?0\\.\\d+");
+		// while double is found on each line, get contents of this line. Then advance to nextline. 
+		for (int i = 0; i < numAns; i++) {
+			System.out.printf("i: %d\n", i);
+			try {
+				answerToAdd = new MCSAAnswer(input);
+				System.out.println(answerToAdd.toString());
+				/*
+				if (answerToAdd == null) {
+					System.out.println("answerToAdd was null. I think I'm going insane...");
+				}
+				*/
+				System.out.println("Executing addAnswer...");
+				this.addAnswer((MCAnswer) answerToAdd);
+			} catch(NullPointerException e) {
+				System.out.println("MCAnswer was null for some reason");
+				e.printStackTrace();
+			}
+		}
+		// String foo = input.nextLine();
+		// String bar = input.nextDouble();
+		// System.out.printf("input.nextLine: %s\n input.nextDouble: %lf\n", foo, bar );
 	}
 
 	/**
@@ -31,15 +67,16 @@ public class MCSAQuestion extends MCQuestion {
 		return ans;
 	}
 
+	/*
 	/** Creates a new Answer object a String input
 	  * @param text string to be description of answer
 	  * @return Answer object created from String text
-	  */
 	public Answer getNewAnswer(String text) {
 		MCSAAnswer ans = new MCSAAnswer(text);
 		answers.add(ans);
 		return ans;
 	}
+    */
 
 	/**
 	  * Reads String and Double from user and creates
@@ -64,18 +101,23 @@ public class MCSAQuestion extends MCQuestion {
 			ans.setSelected(false);
 		}
 		System.out.println("Please enter your answer in the form of a letter: ");
-		Scanner scInput = new Scanner(System.in);
-		char charStdntAns = scInput.findInLine(".").charAt(0);
+		// Scanner scInput = getKeyBoardScanner();
+		char charStdntAns = ScannerFactory.getKeyboardScanner().findInLine(".").charAt(0);
 		int arrayAnswerIndex = (int) charStdntAns - 0x41;
 		int arrayMaxIndex = answers.size() - 1;
 		while ((arrayAnswerIndex < 0) || (arrayAnswerIndex > arrayMaxIndex)) {
-			System.out.println("You entered an invalid answer. Please try again.");
-			scInput = new Scanner(System.in);
-			charStdntAns = scInput.findInLine(".").charAt(0);
+			System.out.printf("%c entered an invalid answer. Please try again.", charStdntAns);
+			charStdntAns = ScannerFactory.getKeyboardScanner().findInLine(".").charAt(0);
 			arrayAnswerIndex = (int) charStdntAns - 0x41;
 		}
 		studentAnswer = answers.get(arrayAnswerIndex);
+		if (studentAnswer == null) {
+			System.out.println("studentAnswer was null.\n");
+		}
 		((MCAnswer) studentAnswer).setSelected(true);
+		ScannerFactory.getKeyboardScanner().nextLine(); 
+		// Advance Scanner to next line, so question coming after this one will parse input instead 
+		// just getting an EOL character. 
 	}
 
 	/**
@@ -83,7 +125,7 @@ public class MCSAQuestion extends MCQuestion {
 	 * @return value of MCSAQuestion object
 	 */
 	public double getValue() {
-		return super.getValue((MCSAAnswer) studentAnswer );
+		return super.getValue((MCAnswer) studentAnswer );
 		/*
 		double value = 0;
 		try {
@@ -95,4 +137,10 @@ public class MCSAQuestion extends MCQuestion {
 		return value;
 		*/
 	}
+
+	public void save(PrintWriter output) {
+		super.save(output);
+	}
+
+
 }

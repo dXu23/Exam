@@ -11,6 +11,9 @@ import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// public static final String ANSI_RESET = "\u001B[0m";
+// public static final String ANSI_BLUE = "\u001B[34m";
+
 public abstract class MCQuestion extends Question {
 	// Members
 	protected ArrayList<MCAnswer> answers;

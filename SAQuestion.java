@@ -1,4 +1,13 @@
+
+/** 
+ *  Question.java
+ *  @author Daniel Xu
+ *  @version 3.0
+*/
+
 import java.util.Scanner;
+import java.io.PrintWriter;
+
 public class SAQuestion extends Question {
 	public SAQuestion(String text, double maxValue) {
 		/** SAQuestion constructor
@@ -6,6 +15,11 @@ public class SAQuestion extends Question {
 		  * @param maxValue double to made the maximum value of SAQuestion
 		  */
 		super(text, maxValue);
+	}
+
+	SAQuestion(Scanner input) {
+		super(input);
+		this.rightAnswer = new SAAnswer(input);
 	}
 
 	public Answer getNewAnswer() {
@@ -32,8 +46,7 @@ public class SAQuestion extends Question {
 		  * of the student. 
 		  */
 		System.out.println("Please enter your short answer as text input:");
-		Scanner scInput = new Scanner(System.in);
-		String studentInput = scInput.nextLine();
+		String studentInput = ScannerFactory.getKeyboardScanner().nextLine();
 		this.studentAnswer = new SAAnswer(studentInput);
 	}
 
@@ -52,5 +65,12 @@ public class SAQuestion extends Question {
 			System.exit(0);
 		}
 		return value;
+	}
+
+	public void save(PrintWriter output) {
+		output.println("SAQuestion");
+		output.printf("%.1f\n" + 
+				"%s\n", this.maxValue, this.text);
+		this.rightAnswer.save(output);
 	}
 }

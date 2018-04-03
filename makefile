@@ -21,6 +21,12 @@ MCQuestion.class: MCQuestion.java
 MCAnswer.class: MCAnswer.java
 	$(JC) $(JFLAGS) MCAnswer.java
 
+MCMAQuestion.class: MCMAQuestion.java
+	$(JC) $(JFLAGS) MCMAQuestion.java
+
+MCMAAnswer.class: MCMAAnswer.java
+	$(JC) $(JFLAGS) MCMAAnswer.java
+
 SAQuestion.class: SAQuestion.java
 	$(JC) $(JFLAGS) SAQuestion.java
 					 
