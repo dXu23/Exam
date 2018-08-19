@@ -10,6 +10,9 @@ import java.util.Scanner;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.Collections;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class Exam {
 	private String text;
@@ -38,11 +41,8 @@ public class Exam {
 			questionType = input.nextLine();
 			// Take care of empty lines
 			if (questionType.equals("")) {
-				System.out.println("Empty line");
 				continue;
 			}
-			System.out.printf("i: %d\n", i);
-			System.out.printf("questionType: %s\n", questionType);
 			switch (questionType) {
 				case "MCSAQuestion":
 					questionToAdd = new MCSAQuestion(input);
@@ -52,6 +52,9 @@ public class Exam {
 					break;
 				case "SAQuestion":
 					questionToAdd = new SAQuestion(input);
+					break;
+				case "NumQuestion":
+					questionToAdd = new NumQuestion(input);
 					break;
 				default:
 					break;
@@ -64,8 +67,21 @@ public class Exam {
 		}
 	}
 
+	public JFrame makeExamGui() {
+		JFrame examFrame = new JFrame(text);
+		JPanel questionPanel;
+        Container content = examFrame.getContentPane(); // unnecessary in 5.0+
+        content.setLayout(new GridLayout(3, 1));
+		for (Question question : questions) {
+			questionPanel = question.createPanel();
+			content.add(questionPanel);
+		}
+        examFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        examFrame.setSize(300, 150);
+        examFrame.setVisible(true);
+		return examFrame;
+	}
 
-	// Works
 	public void addQuestion(Question question) {
 		/** Adds Question to Exam class
 		  * @param question Question to be added to Exam class
@@ -115,6 +131,7 @@ public class Exam {
 	public void print() {
 		/** Prints the Exam
 		  */
+		System.out.println("----------------------------------------");
 		System.out.printf("%s\n", text);
 		int i = 1;
 		for (Question examQuestion : questions) {
@@ -127,6 +144,7 @@ public class Exam {
 			}
 			i++;
 		}
+		System.out.println("----------------------------------------");
 	}
 
 	// Works
@@ -175,7 +193,7 @@ public class Exam {
 	public void save(PrintWriter output) {
 		System.out.println("In save method of Exam object right now...");
 		System.out.printf("\n\n");
-		output.printf("%s\n", text);
+		output.printf("%s\n\n", text);
 		for (Question examQuestion: questions) {
 			examQuestion.save(output);
 			output.printf("\n");
@@ -184,8 +202,40 @@ public class Exam {
 	}
 
 	void saveStudentAnswers(PrintWriter output) {
+		System.out.println("In saveStudentAnswers right now...\n");
+		int i = 0;
 		for (Question question : questions) {
-			question.save(output);
+			System.out.printf("i: %d\n", i);
+			question.saveStudentAnswer(output);
+			i++;
+		}
+	}
+
+	void restoreStudentAnswers(Scanner input) {
+		int i = 0;
+		int numOfQuestions = questions.size();
+		String line = "";
+		while ((i < numOfQuestions) && (input.hasNextLine())) {
+			line = input.nextLine();
+			// System.out.printf("line: %s\n", line);
+			if (line == "") {
+				continue;
+			}
+			questions.get(i).restoreStudentAnswers(input);
+			i++;
+		}
+	}
+
+	void saveScore(PrintWriter output) {
+		output.printf("%f\n", getValue());
+		int fencePosts = questions.size() - 1;
+		int i = 0;
+		for (Question question : questions) {
+			output.printf("%f", question.getValue());
+			if (i < fencePosts) {
+				output.print(", ");
+			}
+			i++;
 		}
 	}
 }

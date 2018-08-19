@@ -7,6 +7,9 @@
 
 import java.util.Scanner;
 import java.io.PrintWriter;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class SAQuestion extends Question {
 	public SAQuestion(String text, double maxValue) {
@@ -17,9 +20,9 @@ public class SAQuestion extends Question {
 		super(text, maxValue);
 	}
 
-	SAQuestion(Scanner input) {
+	public SAQuestion(Scanner input) {
 		super(input);
-		this.rightAnswer = new SAAnswer(input);
+		rightAnswer = new SAAnswer(input);
 	}
 
 	public Answer getNewAnswer() {
@@ -62,7 +65,6 @@ public class SAQuestion extends Question {
 			System.out.println(e);
 			System.out.println("getAnswerFromStudent was likely not called for some SAQuestion.");
 			System.out.println("You might want to double-check the number of getAnswerFromStudent calls");
-			System.exit(0);
 		}
 		return value;
 	}
@@ -72,5 +74,20 @@ public class SAQuestion extends Question {
 		output.printf("%.1f\n" + 
 				"%s\n", this.maxValue, this.text);
 		this.rightAnswer.save(output);
+	}
+
+	public void restoreStudentAnswers(Scanner input) {
+		if (!input.nextLine().equals("SAAnswer")) {
+			System.out.println("Warning! SAQuestion in Exam object not matching that of file!");
+		}
+		studentAnswer = new SAAnswer(input);
+	}
+
+	public JPanel createPanel() {
+		JPanel questionPanel = new JPanel();
+		JLabel questionText = new JLabel(this.text);
+		JLabel prompt = new JLabel("Your answer:");
+		JTextField SAstudentAnswer = new JTextField("");
+		return questionPanel;
 	}
 }

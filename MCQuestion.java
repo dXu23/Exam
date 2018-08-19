@@ -10,6 +10,9 @@ import java.util.Collections;
 import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 // public static final String ANSI_RESET = "\u001B[0m";
 // public static final String ANSI_BLUE = "\u001B[34m";
@@ -58,16 +61,13 @@ public abstract class MCQuestion extends Question {
 	public double getValue(MCAnswer MCAns) {
 		double value = 0;
 		try {
-			for (Answer loopMCAns : answers) {
-				if (MCAns.getCredit(loopMCAns) != 0.0) {
-					value = MCAns.getCredit(loopMCAns) * maxValue;
-				}
+			for (Answer answer : answers) {
+				value += answer.getCredit(rightAnswer) * maxValue;
 			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			System.out.println(e);
-			System.out.println("getAnswerFromStudent was likely not called for some MCQuestion or student" +
-					"enter answer.");
+			System.out.println("getAnswerFromStudent was likely not called for some MCQuestion or student");
 			System.out.println("You might want to double-check the number of getAnswerFromStudent calls");
 			return 0.0;
 		}
@@ -94,9 +94,26 @@ public abstract class MCQuestion extends Question {
 	public void save(PrintWriter output) {
 		output.printf("%s\n" +
 				"%.1f\n" + 
-				"%s\n", this.getClass().toString().substring(6), this.maxValue, this.text);
+				"%s\n" +
+				"%d\n", this.getClass().toString().substring(6), this.maxValue, this.text, answers.size());
 		for (MCAnswer MCans : answers) {
 			MCans.save(output);
 		}
 	}
+
+	public JPanel createPanel() {
+		JPanel questionPanel = new JPanel();
+		JLabel questionText = new JLabel(this.text);
+		questionPanel.add(questionText);
+		final ButtonGroup answerGroup = new ButtonGroup();
+		JRadioButton answerButton;
+		for (MCAnswer answer : answers) {
+			questionPanel.add(answerButton = answer.createMCRadioButton());
+			answerButton.setActionCommand(answer.text);
+			answerGroup.add(answerButton);
+		}
+		return questionPanel;
+	}
+
 }
+

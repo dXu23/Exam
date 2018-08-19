@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.PrintWriter;
 import java.lang.*;
+import java.math.BigInteger;
 public class MCSAQuestion extends MCQuestion {
 
 	/**
@@ -21,25 +22,21 @@ public class MCSAQuestion extends MCQuestion {
 
 	public MCSAQuestion(Scanner input) {
 		super(input);
-		System.out.printf("text: %s\n", this.text);
-		System.out.printf("maxValue: %s\n", this.maxValue);
-		int numAns = input.nextInt();
-		System.out.printf("numAns: %d\n", numAns);
+		// System.out.printf("text: %s\n", this.text);
+		// System.out.printf("maxValue: %s\n", this.maxValue);
+		int numOfAns = input.nextInt();
+		double rightAnsVal = 0;
+		// System.out.printf("numOfAns: %d\n", numOfAns);
 		input.nextLine();
 		MCSAAnswer answerToAdd;
 		// Pattern ansValPattern = Pattern.compile("^-?0\\.\\d+");
 		// while double is found on each line, get contents of this line. Then advance to nextline. 
-		for (int i = 0; i < numAns; i++) {
-			System.out.printf("i: %d\n", i);
+		for (int i = 0; i < numOfAns; i++) {
+			// System.out.printf("i: %d\n", i);
 			try {
 				answerToAdd = new MCSAAnswer(input);
-				System.out.println(answerToAdd.toString());
-				/*
-				if (answerToAdd == null) {
-					System.out.println("answerToAdd was null. I think I'm going insane...");
-				}
-				*/
-				System.out.println("Executing addAnswer...");
+				// System.out.println(answerToAdd.toString());
+				// System.out.println("Executing addAnswer...");
 				this.addAnswer((MCAnswer) answerToAdd);
 			} catch(NullPointerException e) {
 				System.out.println("MCAnswer was null for some reason");
@@ -101,7 +98,6 @@ public class MCSAQuestion extends MCQuestion {
 			ans.setSelected(false);
 		}
 		System.out.println("Please enter your answer in the form of a letter: ");
-		// Scanner scInput = getKeyBoardScanner();
 		char charStdntAns = ScannerFactory.getKeyboardScanner().findInLine(".").charAt(0);
 		int arrayAnswerIndex = (int) charStdntAns - 0x41;
 		int arrayMaxIndex = answers.size() - 1;
@@ -110,11 +106,11 @@ public class MCSAQuestion extends MCQuestion {
 			charStdntAns = ScannerFactory.getKeyboardScanner().findInLine(".").charAt(0);
 			arrayAnswerIndex = (int) charStdntAns - 0x41;
 		}
+		answers.get(arrayAnswerIndex).setSelected(true);
 		studentAnswer = answers.get(arrayAnswerIndex);
 		if (studentAnswer == null) {
 			System.out.println("studentAnswer was null.\n");
 		}
-		((MCAnswer) studentAnswer).setSelected(true);
 		ScannerFactory.getKeyboardScanner().nextLine(); 
 		// Advance Scanner to next line, so question coming after this one will parse input instead 
 		// just getting an EOL character. 
@@ -142,5 +138,39 @@ public class MCSAQuestion extends MCQuestion {
 		super.save(output);
 	}
 
+	public void restoreStudentAnswers(Scanner input) {
+		if (!input.nextLine().equals("MCSAAnswer")) {
+			System.out.println("Warning! MCSAQuestion in Exam object not matching that of file!");
+		}
+		studentAnswer = new MCSAAnswer(input);
+		int i = 0;
+		int answersSize = answers.size();
+		boolean isNotEqual = true;
 
+		while ((i < answersSize) && (isNotEqual)) {
+			// System.out.printf("i: %d\n", i);
+			// System.out.printf("studentAnswer.text: %s\n", ((MCAnswer) studentAnswer).text);
+			/*
+			byte []bytesone = ((MCAnswer) studentAnswer).text.getBytes();
+			for (byte b:bytesone) {
+				System.out.println(b);
+			}
+			System.out.printf("answers.get(%d).text: %s\n", i, ((MCAnswer) answers.get(i)).text);
+			byte []bytestwo = ((MCAnswer) answers.get(i)).text.getBytes();
+			for (byte b:bytestwo) {
+				System.out.println(b);
+			}
+			*/
+			isNotEqual = !(((MCAnswer) answers.get(i)).equals(((MCAnswer) studentAnswer)));
+			// System.out.println("isNotEqual is " + isNotEqual);
+			i++;
+		}
+
+		if (isNotEqual) {
+			System.out.printf("WARNING! %s in saved answers file not one of the possible answers!", ((MCAnswer) studentAnswer).text);
+		} else {
+			answers.get(i - 1).setSelected(true);
+		}
+	}
 }
+

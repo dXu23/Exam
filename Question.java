@@ -6,6 +6,9 @@
 import java.util.Random;
 import java.util.Scanner;
 import java.io.PrintWriter;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public abstract class Question {
 	protected String text;
@@ -39,6 +42,10 @@ public abstract class Question {
 	public void print() {
 		try {
 			System.out.printf("%s\n", text);
+			/*
+			System.out.println("Student Answer:");
+			studentAnswer.print();
+			*/
 		} catch(NullPointerException e) {
 			System.out.println("text is null\n");
 			e.printStackTrace();
@@ -70,5 +77,20 @@ public abstract class Question {
 
 	public abstract void save(PrintWriter output);
 
+	public void saveStudentAnswer(PrintWriter output) {
+		output.printf("%s\n", this.getClass().toString().substring(6));
+		if (studentAnswer == null) {
+			System.out.println("studentAnswer was null.\n");
+		}
+		try {
+			studentAnswer.save(output);
+		} catch (NullPointerException e) {
+			System.out.println("In method saveStudentAnswer, studentAnswer member was likely null.");
+			e.printStackTrace();
+		}
+	}
+
+	public abstract void restoreStudentAnswers(Scanner input);
+	public abstract JPanel createPanel();
 }
 

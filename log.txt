@@ -1,0 +1,140 @@
+Daniel Xu
+dxu23
+Please enter the name of your Exam file: Step 1: Creating Exam objects, Question objects, and Answer objects... 
+
+i: 0
+questionType: 
+i: 1
+questionType: SAQuestion
+i: 2
+questionType: 
+i: 3
+questionType: MCSAQuestion
+text: What do you put on a peanut butter and jelly sandwich?
+maxValue: 5.0
+numAns: 5
+i: 0
+ansVal: 0.500
+ansText: Peanut butter
+MCSAAnswer@33909752
+Executing addAnswer...
+i: 1
+ansVal: 0.500
+ansText: Jelly
+MCSAAnswer@55f96302
+Executing addAnswer...
+i: 2
+ansText: Peanut butter and jelly
+MCSAAnswer@3d4eac69
+Executing addAnswer...
+i: 3
+ansVal: 0.000
+ansText: Onions
+MCSAAnswer@42a57993
+Executing addAnswer...
+i: 4
+ansVal: 0.000
+ansText: Horseradish
+MCSAAnswer@75b84c92
+Executing addAnswer...
+i: 4
+questionType: 
+i: 5
+questionType: MCMAQuestion
+ansVal: 0.200
+ansText: Harry Potter
+ansVal: 0.200
+ansText: Rubeus Hagrid
+ansVal: -0.200
+ansText: Princess Leia
+ansVal: -0.200
+ansText: Bilbo Baggins
+ansVal: 0.200
+ansText: Tom Riddle
+i: 6
+questionType: 
+i: 7
+questionType: NumQuestion
+i: 8
+questionType: 5.0
+i: 9
+questionType: What is the area of a circle with a radius of 3.66?
+i: 10
+questionType: 42.08
+i: 11
+questionType: 0.1
+Step 2: Printing exam...
+Sample Exam Title
+1. What OO principle is implemented with private variables?
+2. What OO principle is implemented with private variables?
+3. What do you put on a peanut butter and jelly sandwich?
+(A). Peanut butter
+(B). Jelly
+(C). Peanut butter and jelly
+(D). Onions
+(E). Horseradish
+
+4. What do you put on a peanut butter and jelly sandwich?
+(A). Peanut butter
+(B). Jelly
+(C). Peanut butter and jelly
+(D). Onions
+(E). Horseradish
+
+5. Who went to Hogwarts?  Circle all that apply:
+(A). Harry Potter
+(B). Rubeus Hagrid
+(C). Princess Leia
+(D). Bilbo Baggins
+(E). Tom Riddle
+
+6. Who went to Hogwarts?  Circle all that apply:
+(A). Harry Potter
+(B). Rubeus Hagrid
+(C). Princess Leia
+(D). Bilbo Baggins
+(E). Tom Riddle
+
+7. Who went to Hogwarts?  Circle all that apply:
+(A). Harry Potter
+(B). Rubeus Hagrid
+(C). Princess Leia
+(D). Bilbo Baggins
+(E). Tom Riddle
+
+8. Who went to Hogwarts?  Circle all that apply:
+(A). Harry Potter
+(B). Rubeus Hagrid
+(C). Princess Leia
+(D). Bilbo Baggins
+(E). Tom Riddle
+
+9. Who went to Hogwarts?  Circle all that apply:
+(A). Harry Potter
+(B). Rubeus Hagrid
+(C). Princess Leia
+(D). Bilbo Baggins
+(E). Tom Riddle
+
+10. Who went to Hogwarts?  Circle all that apply:
+(A). Harry Potter
+(B). Rubeus Hagrid
+(C). Princess Leia
+(D). Bilbo Baggins
+(E). Tom Riddle
+
+11. Who went to Hogwarts?  Circle all that apply:
+(A). Harry Potter
+(B). Rubeus Hagrid
+(C). Princess Leia
+(D). Bilbo Baggins
+(E). Tom Riddle
+
+Grading exam...
+
++===============+============+
+|    Question   |   Value    |
++===============+============+
+java.lang.NullPointerException
+getAnswerFromStudent was likely not called for some SAQuestion.
+You might want to double-check the number of getAnswerFromStudent calls

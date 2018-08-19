@@ -1,0 +1,76 @@
+Daniel Xu
+dxu23
+Step 1: Creating Exam objects, Question objects, and Answer objects... 
+
+Creating new exam with header CS 342 Exam
+...
+Step 2: Printing exam...
+CS 342 Exam
+
+1. What is the derivative of e^x?
+(A). sin x
+(B). cos x
+(C). x
+(D). tan x
+(E). e^x
+
+2. How many bytes are in an int?
+(A). 4
+(B). 96
+(C). 16
+(D). 8
+(E). 32
+
+3. What OO principle is implemented with private variables?
+4. What did 8 bytes say to the bartender?
+Step 3: Reordering questions and Answers 
+
+CS 342 Exam
+
+1. What is the derivative of e^x?
+(A). x
+(B). e^x
+(C). cos x
+(D). tan x
+(E). sin x
+
+2. What OO principle is implemented with private variables?
+3. How many bytes are in an int?
+(A). 4
+(B). 96
+(C). 32
+(D). 8
+(E). 16
+
+4. What did 8 bytes say to the bartender?
+For question 1
+Please enter your answer in the form of a letter: 
+For question 2
+Please enter your answer.
+For question 3
+Please enter your answer in the form of a letter: 
+For question 4
+Please enter your answer.
+Grading exam...
+
++===============+============+
+|    Question   |   Value    |
++===============+============+
+|       1       |  0.000000  |
++---------------+------------+
+studentAnswer: C
+rightAnswer: Information Hiding
+|       2       |  0.000000  |
++---------------+------------+
+|       3       |  0.000000  |
++---------------+------------+
+studentAnswer: C
+rightAnswer: Make us a double
+|       4       |  0.000000  |
++---------------+------------+
+studentAnswer: C
+rightAnswer: Information Hiding
+studentAnswer: C
+rightAnswer: Make us a double
+|     Total     |  0.000000  |
++---------------+------------+

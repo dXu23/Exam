@@ -8,7 +8,7 @@ public class MCMAAnswer extends MCAnswer {
 
 	public MCMAAnswer(String text, double creditIfSelected) {
 		super(text);
-		if ((creditIfSelected <= -1) || (creditIfSelected >= 1)) {
+		if ((creditIfSelected < -1) || (creditIfSelected > 1)) {
 			this.creditIfSelected = 0;
 		} else {
 			this.creditIfSelected = creditIfSelected;
@@ -19,7 +19,11 @@ public class MCMAAnswer extends MCAnswer {
 		super(input);
 	}
 
-	public double getCredit(Answer rightAnswer) {
-        return creditIfSelected;
+	public double getCredit() {
+		if (selected) {
+			return creditIfSelected;
+		} else {
+			return 0;
+		}
 	}
 }
